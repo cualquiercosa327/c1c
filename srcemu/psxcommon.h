@@ -42,6 +42,7 @@ extern "C" {
 #include <ctype.h>
 #include <sys/types.h>
 #include <assert.h>
+#include <stdint.h>
 
 // Define types
 typedef int8_t s8;

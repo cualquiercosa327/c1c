@@ -225,7 +225,7 @@ void psxMemWrite8(u32 mem, u8 value) {
 		if (p != NULL) {
 			*(u8 *)(p + (mem & 0xffff)) = value;
 #ifdef PSXREC
-			psxCpu->Clear((mem & (~3)), 1);
+			//psxCpu->Clear((mem & (~3)), 1);
 #endif
 		} else {
 #ifdef PSXMEM_LOG
@@ -254,7 +254,7 @@ void psxMemWrite16(u32 mem, u16 value) {
 		if (p != NULL) {
 			*(u16 *)(p + (mem & 0xffff)) = SWAPu16(value);
 #ifdef PSXREC
-			psxCpu->Clear((mem & (~3)), 1);
+			//psxCpu->Clear((mem & (~3)), 1);
 #endif
 		} else {
 #ifdef PSXMEM_LOG
@@ -284,13 +284,13 @@ void psxMemWrite32(u32 mem, u32 value) {
 		if (p != NULL) {
 			*(u32 *)(p + (mem & 0xffff)) = SWAPu32(value);
 #ifdef PSXREC
-			psxCpu->Clear(mem, 1);
+			//psxCpu->Clear(mem, 1);
 #endif
 		} else {
 			if (mem != 0xfffe0130) {
 #ifdef PSXREC
-				if (!writeok)
-					psxCpu->Clear(mem, 1);
+				if (!writeok) {}
+					//psxCpu->Clear(mem, 1);
 #endif
 
 #ifdef PSXMEM_LOG

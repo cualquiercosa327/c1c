@@ -55,7 +55,7 @@ static void CreateMainWindow() {
 	ShowWindow(hwnd, SW_SHOW);
 }
 
-static int OpenPlugins() {
+/*static */int OpenPlugins() {
 	int ret;
 
 	if (!hwnd)
@@ -157,6 +157,7 @@ DLLEXPORT(void) pcsxInit(const char *filename,void **regbase,struct nativeinfo *
 	native = *newnative;
 	*regbase = &psxRegs.GPR;
 	SetIsoFile(filename);
+  psxM = (unsigned char*)native.ram;
 	if (EmuInit() == -1)
 		abort();
 	if (LoadPlugins() == -1)
@@ -169,7 +170,7 @@ DLLEXPORT(void) pcsxInit(const char *filename,void **regbase,struct nativeinfo *
 	if (LoadCdrom() == -1)
 		abort();
 	LoadMcd(1,"memcard1");
-	*native.ram = psxM;
+  //*native.ram = psxM;
 	*native.scratchpad = psxH;
 }
 
@@ -245,7 +246,7 @@ DLLEXPORT(void) pcsxWriteMemory32(int address,int value)
 
 ////
 // from psxinterpreter.c
-static void psxTestSWInts() {
+/*static */void psxTestSWInts() {
 	// the next code is untested, if u know please
 	// tell me if it works ok or not (linuzappz)
 	if (psxRegs.CP0.n.Cause & psxRegs.CP0.n.Status & 0x0300 &&
