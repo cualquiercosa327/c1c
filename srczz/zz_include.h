@@ -19,7 +19,7 @@ ZZ_MARK_NATIVE(0x80011FC4,0x80012660,ZZ_11FC4,CORE_Loop);
 #include "zz_13748.h"
 #include "zz_13798.h"
 #include "zz_13970.h"
-#include "zz_13b30.h"
+ZZ_MARK_NATIVE(0x80013B30,0x80013D48,ZZ_13B30,NS_13B30);
 #include "zz_13d48.h"
 #include "zz_141f4.h"
 #include "zz_1439c.h"

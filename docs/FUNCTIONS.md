@@ -22,8 +22,8 @@ Unlabeled functions have not yet been reverse engineered and can be found under 
 * `800134C8`
 * `80013748`
 * `80013798`
-* `80013B30`
-* `80013B94`
+* `80013B30` - `NS_13B30`
+* `80013B94` - `NS_13B94`
 * `80013D48`
 * `800141F4`
 * `8001439c`
