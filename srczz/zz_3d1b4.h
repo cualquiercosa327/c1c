@@ -1,0 +1,21 @@
+#ifdef ZZ_INCLUDE_CODE
+ZZ_3D1B4:
+	A1 = 0x80050000;
+	A1 += 26000;
+	A0 = 0x80050000;
+	A0 += 28732;
+	EMU_ReadLeft(A1 + 3,&V0); //+ 0x3
+	EMU_ReadRight(A1,&V0);
+	V1 = EMU_ReadS8(A1 + 4); //+ 0x4
+	EMU_WriteLeft(A0 + 3,V0); //+ 0x3
+	EMU_WriteRight(A0,V0);
+	EMU_Write8(A0 + 4,V1); //+ 0x4
+	V0 = EMU_ReadS8(A1 + 5); //+ 0x5
+	EMU_Write8(A0 + 5,V0); //+ 0x5
+	ZZ_JUMPREGISTER_BEGIN(RA);
+	V0 = R0;
+	ZZ_CLOCKCYCLES_JR(15);
+	ZZ_JUMPREGISTER(0x800262CC,ZZ_26200_CC);
+	ZZ_JUMPREGISTER_END();
+#endif
+ZZ_MARK_TARGET(0x8003D1B4,0x8003D1F0,ZZ_3D1B4);

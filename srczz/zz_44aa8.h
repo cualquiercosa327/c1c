@@ -1,0 +1,36 @@
+#ifdef ZZ_INCLUDE_CODE
+ZZ_44AA8:
+	V1 = 0x80050000;
+	V1 = EMU_ReadU32(V1 + 22628); //+ 0x5864
+	V0 = 0x2;
+	EMU_Write8(V1,V0);
+	V1 = 0x80050000;
+	V1 = EMU_ReadU32(V1 + 22636); //+ 0x586C
+	V0 = EMU_ReadU8(A0);
+	EMU_Write8(V1,V0);
+	V1 = 0x80050000;
+	V1 = EMU_ReadU32(V1 + 22640); //+ 0x5870
+	V0 = EMU_ReadU8(A0 + 1); //+ 0x1
+	EMU_Write8(V1,V0);
+	V1 = 0x80050000;
+	V1 = EMU_ReadU32(V1 + 22628); //+ 0x5864
+	V0 = 0x3;
+	EMU_Write8(V1,V0);
+	V1 = 0x80050000;
+	V1 = EMU_ReadU32(V1 + 22632); //+ 0x5868
+	V0 = EMU_ReadU8(A0 + 2); //+ 0x2
+	EMU_Write8(V1,V0);
+	V1 = 0x80050000;
+	V1 = EMU_ReadU32(V1 + 22636); //+ 0x586C
+	V0 = EMU_ReadU8(A0 + 3); //+ 0x3
+	EMU_Write8(V1,V0);
+	V1 = 0x80050000;
+	V1 = EMU_ReadU32(V1 + 22640); //+ 0x5870
+	V0 = 0x20;
+	EMU_Write8(V1,V0);
+	ZZ_JUMPREGISTER_BEGIN(RA);
+	V0 = R0;
+	ZZ_CLOCKCYCLES_JR(34);
+	ZZ_JUMPREGISTER_END();
+#endif
+ZZ_MARK_TARGET(0x80044AA8,0x80044B30,ZZ_44AA8);

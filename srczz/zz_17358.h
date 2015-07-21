@@ -1,0 +1,71 @@
+#ifdef ZZ_INCLUDE_CODE
+ZZ_17358:
+	V1 = 0x80060000;
+	V1 = EMU_ReadU32(V1 - 31732); //+ 0xFFFF840C
+	SP -= 56;
+	EMU_Write32(SP + 20,S1); //+ 0x14
+	S1 = A0;
+	EMU_Write32(SP + 24,S2); //+ 0x18
+	S2 = A1;
+	EMU_Write32(SP + 40,S6); //+ 0x28
+	S6 = A2;
+	EMU_Write32(SP + 48,RA); //+ 0x30
+	EMU_Write32(SP + 44,S7); //+ 0x2C
+	EMU_Write32(SP + 36,S5); //+ 0x24
+	EMU_Write32(SP + 32,S4); //+ 0x20
+	EMU_Write32(SP + 28,S3); //+ 0x1C
+	EMU_Write32(SP + 16,S0); //+ 0x10
+	S0 = EMU_ReadU32(V1 + 120); //+ 0x78
+	S7 = A3;
+	V0 = S0 + 16;
+	EMU_Write32(V1 + 120,V0); //+ 0x78
+	S3 = EMU_ReadU8(SP + 72); //+ 0x48
+	S4 = EMU_ReadU8(SP + 76); //+ 0x4C
+	S5 = EMU_ReadU8(SP + 80); //+ 0x50
+	RA = 0x800173B8; //ZZ_17358_60
+	A0 = S0;
+	ZZ_CLOCKCYCLES(24,0x8003FA14);
+	goto ZZ_3FA14;
+ZZ_17358_60:
+	EMU_Write16(S0 + 12,S6); //+ 0xC
+	EMU_Write16(S0 + 14,S7); //+ 0xE
+	EMU_Write8(S0 + 4,S3); //+ 0x4
+	EMU_Write8(S0 + 5,S4); //+ 0x5
+	EMU_Write8(S0 + 6,S5); //+ 0x6
+	V0 = 0x80060000;
+	V0 = EMU_ReadU32(V0 - 31732); //+ 0xFFFF840C
+	V0 = EMU_ReadU16(V0 + 24); //+ 0x18
+	S1 += V0;
+	EMU_Write16(S0 + 8,S1); //+ 0x8
+	V0 = 0x80060000;
+	V0 = EMU_ReadU32(V0 - 31732); //+ 0xFFFF840C
+	V0 = EMU_ReadU16(V0 + 26); //+ 0x1A
+	S2 += V0;
+	EMU_Write16(S0 + 10,S2); //+ 0xA
+	A0 = 0x80060000;
+	A0 = EMU_ReadU32(A0 - 31732); //+ 0xFFFF840C
+	A1 = S0;
+	RA = 0x80017418; //ZZ_17358_C0
+	A0 += 136;
+	ZZ_CLOCKCYCLES(24,0x8003F73C);
+	goto ZZ_3F73C;
+ZZ_17358_C0:
+	RA = EMU_ReadU32(SP + 48); //+ 0x30
+	S7 = EMU_ReadU32(SP + 44); //+ 0x2C
+	S6 = EMU_ReadU32(SP + 40); //+ 0x28
+	S5 = EMU_ReadU32(SP + 36); //+ 0x24
+	S4 = EMU_ReadU32(SP + 32); //+ 0x20
+	S3 = EMU_ReadU32(SP + 28); //+ 0x1C
+	S2 = EMU_ReadU32(SP + 24); //+ 0x18
+	S1 = EMU_ReadU32(SP + 20); //+ 0x14
+	S0 = EMU_ReadU32(SP + 16); //+ 0x10
+	SP += 56;
+	ZZ_JUMPREGISTER_BEGIN(RA);
+	ZZ_CLOCKCYCLES_JR(12);
+	ZZ_JUMPREGISTER(0x8001704C,ZZ_16E5C_1F0);
+	ZZ_JUMPREGISTER(0x80016FD0,ZZ_16E5C_174);
+	ZZ_JUMPREGISTER_END();
+#endif
+ZZ_MARK_TARGET(0x80017358,0x800173B8,ZZ_17358);
+ZZ_MARK_TARGET(0x800173B8,0x80017418,ZZ_17358_60);
+ZZ_MARK_TARGET(0x80017418,0x80017448,ZZ_17358_C0);

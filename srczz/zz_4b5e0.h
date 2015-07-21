@@ -1,0 +1,55 @@
+#ifdef ZZ_INCLUDE_CODE
+ZZ_4B5E0:
+	A1 <<= 16;
+	A1 = (int32_t)A1 >> 16;
+	V0 = A1 << 1;
+	V0 += A1;
+	V0 <<= 2;
+	V0 = V0 - A1;
+	V0 <<= 2;
+	A0 <<= 16;
+	V1 = 0x80060000;
+	V1 += 1048;
+	A0 = (int32_t)A0 >> 14;
+	A0 += V1;
+	V1 = EMU_ReadU32(A0);
+	V0 = V0 - A1;
+	A1 = V0 << 2;
+	A2 = A1 + V1;
+	V1 = EMU_ReadU32(A2 + 144); //+ 0x90
+	V0 = V1 & 0x204;
+	if (V0)
+	{
+		V0 = V1 & 0x100;
+		ZZ_CLOCKCYCLES(21,0x8004B67C);
+		goto ZZ_4B5E0_9C;
+	}
+	V0 = V1 & 0x100;
+	if (V0)
+	{
+		V0 = -3;
+		ZZ_CLOCKCYCLES(23,0x8004B67C);
+		goto ZZ_4B5E0_9C;
+	}
+	V0 = -3;
+	V0 &= V1;
+	EMU_Write32(A2 + 144,V0); //+ 0x90
+	V1 = EMU_ReadU32(A0);
+	V1 += A1;
+	V0 = EMU_ReadU32(V1 + 144); //+ 0x90
+	V0 |= 0x8;
+	EMU_Write32(V1 + 144,V0); //+ 0x90
+	V1 = EMU_ReadU32(A0);
+	V1 += A1;
+	V0 = EMU_ReadU32(V1 + 144); //+ 0x90
+	V0 |= 0x1;
+	EMU_Write32(V1 + 144,V0); //+ 0x90
+	ZZ_CLOCKCYCLES(39,0x8004B67C);
+ZZ_4B5E0_9C:
+	ZZ_JUMPREGISTER_BEGIN(RA);
+	ZZ_CLOCKCYCLES_JR(2);
+	ZZ_JUMPREGISTER(0x8004B6C8,ZZ_4B6AC_1C);
+	ZZ_JUMPREGISTER_END();
+#endif
+ZZ_MARK_TARGET(0x8004B5E0,0x8004B67C,ZZ_4B5E0);
+ZZ_MARK_TARGET(0x8004B67C,0x8004B684,ZZ_4B5E0_9C);

@@ -1,0 +1,90 @@
+#ifdef ZZ_INCLUDE_CODE
+ZZ_4F8AC:
+	SP -= 56;
+	EMU_Write32(SP + 48,RA); //+ 0x30
+	EMU_Write32(SP + 44,S5); //+ 0x2C
+	EMU_Write32(SP + 40,S4); //+ 0x28
+	EMU_Write32(SP + 36,S3); //+ 0x24
+	EMU_Write32(SP + 32,S2); //+ 0x20
+	EMU_Write32(SP + 28,S1); //+ 0x1C
+	EMU_Write32(SP + 24,S0); //+ 0x18
+	V0 = A1;
+	S2 = A0;
+	A0 = V0 << 16;
+	A0 = (int32_t)A0 >> 16;
+	A1 = A2 << 16;
+	A1 = (int32_t)A1 >> 16;
+	S5 = V0;
+	S4 = A2;
+	RA = 0x8004F8F4; //ZZ_4F8AC_48
+	S3 = A3;
+	ZZ_CLOCKCYCLES(18,0x80050728);
+	goto ZZ_50728;
+ZZ_4F8AC_48:
+	V0 = 0x80060000;
+	V0 = EMU_ReadU8(V0 - 7360); //+ 0xFFFFE340
+	S1 = R0;
+	AT = 0x80060000;
+	EMU_Write16(AT - 6802,S2); //+ 0xFFFFE56E
+	V0 = (int32_t)S1 < (int32_t)V0;
+	if (!V0)
+	{
+		S0 = R0;
+		ZZ_CLOCKCYCLES(8,0x8004F970);
+		goto ZZ_4F8AC_C4;
+	}
+	S0 = R0;
+	V0 = S3 & 0xFFFF;
+	ZZ_CLOCKCYCLES(9,0x8004F918);
+ZZ_4F8AC_6C:
+	EMU_Write32(SP + 16,V0); //+ 0x10
+	A0 = S0 << 16;
+	A0 = (int32_t)A0 >> 16;
+	A1 = S2 << 16;
+	A1 = (int32_t)A1 >> 16;
+	A2 = S5 << 16;
+	A2 = (int32_t)A2 >> 16;
+	A3 = S4 << 16;
+	RA = 0x8004F940; //ZZ_4F8AC_94
+	A3 = (int32_t)A3 >> 16;
+	ZZ_CLOCKCYCLES(10,0x8004F680);
+	goto ZZ_4F680;
+ZZ_4F8AC_94:
+	V0 <<= 16;
+	V0 = (int32_t)V0 >> 16;
+	S1 += V0;
+	V0 = S0 + 1;
+	S0 = V0;
+	V1 = 0x80060000;
+	V1 = EMU_ReadU8(V1 - 7360); //+ 0xFFFFE340
+	V0 <<= 16;
+	V0 = (int32_t)V0 >> 16;
+	V0 = (int32_t)V0 < (int32_t)V1;
+	if (V0)
+	{
+		V0 = S3 & 0xFFFF;
+		ZZ_CLOCKCYCLES(12,0x8004F918);
+		goto ZZ_4F8AC_6C;
+	}
+	V0 = S3 & 0xFFFF;
+	ZZ_CLOCKCYCLES(12,0x8004F970);
+ZZ_4F8AC_C4:
+	V0 = S1;
+	RA = EMU_ReadU32(SP + 48); //+ 0x30
+	S5 = EMU_ReadU32(SP + 44); //+ 0x2C
+	S4 = EMU_ReadU32(SP + 40); //+ 0x28
+	S3 = EMU_ReadU32(SP + 36); //+ 0x24
+	S2 = EMU_ReadU32(SP + 32); //+ 0x20
+	S1 = EMU_ReadU32(SP + 28); //+ 0x1C
+	S0 = EMU_ReadU32(SP + 24); //+ 0x18
+	ZZ_JUMPREGISTER_BEGIN(RA);
+	SP += 56;
+	ZZ_CLOCKCYCLES_JR(10);
+	ZZ_JUMPREGISTER(0x8004A7C0,ZZ_4A740_80);
+	ZZ_JUMPREGISTER_END();
+#endif
+ZZ_MARK_TARGET(0x8004F8AC,0x8004F8F4,ZZ_4F8AC);
+ZZ_MARK_TARGET(0x8004F8F4,0x8004F918,ZZ_4F8AC_48);
+ZZ_MARK_TARGET(0x8004F918,0x8004F940,ZZ_4F8AC_6C);
+ZZ_MARK_TARGET(0x8004F940,0x8004F970,ZZ_4F8AC_94);
+ZZ_MARK_TARGET(0x8004F970,0x8004F998,ZZ_4F8AC_C4);

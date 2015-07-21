@@ -1,0 +1,225 @@
+#ifdef ZZ_INCLUDE_CODE
+ZZ_1922C:
+	SP -= 88;
+	EMU_Write32(SP + 72,S6); //+ 0x48
+	S6 = A0;
+	EMU_Write32(SP + 80,RA); //+ 0x50
+	EMU_Write32(SP + 76,S7); //+ 0x4C
+	EMU_Write32(SP + 68,S5); //+ 0x44
+	EMU_Write32(SP + 64,S4); //+ 0x40
+	EMU_Write32(SP + 60,S3); //+ 0x3C
+	EMU_Write32(SP + 56,S2); //+ 0x38
+	EMU_Write32(SP + 52,S1); //+ 0x34
+	EMU_Write32(SP + 48,S0); //+ 0x30
+	V0 = EMU_ReadU32(S6);
+	if ((int32_t)V0 <= 0)
+	{
+		S7 = R0;
+		ZZ_CLOCKCYCLES(15,0x80019458);
+		goto ZZ_1922C_22C;
+	}
+	S7 = R0;
+	S4 = S6;
+	S5 = R0;
+	ZZ_CLOCKCYCLES(17,0x80019270);
+ZZ_1922C_44:
+	A0 = S5 + 4;
+	RA = 0x8001927C; //ZZ_1922C_50
+	A0 += S6;
+	ZZ_CLOCKCYCLES(3,0x80015A98);
+	goto ZZ_15A98;
+ZZ_1922C_50:
+	T0 = V0;
+	S3 = EMU_ReadU32(T0 + 16); //+ 0x10
+	V1 = EMU_ReadU32(S3 + 28); //+ 0x1C
+	V0 = 0x1;
+	if (V1 != V0)
+	{
+		A3 = S5 + S6;
+		ZZ_CLOCKCYCLES(7,0x800192A8);
+		goto ZZ_1922C_7C;
+	}
+	A3 = S5 + S6;
+	EMU_Write32(S4 + 8,R0); //+ 0x8
+	EMU_Write32(S4 + 12,R0); //+ 0xC
+	EMU_Write32(S4 + 16,R0); //+ 0x10
+	ZZ_CLOCKCYCLES(11,0x800193E4);
+	goto ZZ_1922C_1B8;
+ZZ_1922C_7C:
+	V0 = 0x80050000;
+	V0 = EMU_ReadU32(V0 + 30820); //+ 0x7864
+	V1 = EMU_ReadU32(S3);
+	A0 = 0x80050000;
+	A0 = EMU_ReadS16(A0 + 30724); //+ 0x7804
+	V0 = (int32_t)V0 >> 8;
+	V1 = V1 - V0;
+	EMU_SMultiply(A0,V1);
+	A0 = 0x80050000;
+	A0 = EMU_ReadU32(A0 + 30824); //+ 0x7868
+	EMU_Write32(SP + 16,V1); //+ 0x10
+	V0 = EMU_ReadU32(S3 + 4); //+ 0x4
+	V1 = 0x80050000;
+	V1 = EMU_ReadS16(V1 + 30726); //+ 0x7806
+	A1 = LO;
+	A0 = (int32_t)A0 >> 8;
+	V0 = V0 - A0;
+	EMU_SMultiply(V1,V0);
+	A0 = 0x80050000;
+	A0 = EMU_ReadS16(A0 + 30728); //+ 0x7808
+	EMU_Write32(SP + 20,V0); //+ 0x14
+	V1 = 0x80050000;
+	V1 = EMU_ReadU32(V1 + 30828); //+ 0x786C
+	V0 = EMU_ReadU32(S3 + 8); //+ 0x8
+	A2 = LO;
+	V1 = (int32_t)V1 >> 8;
+	V0 = V0 - V1;
+	EMU_SMultiply(A0,V0);
+	A3 += 8;
+	EMU_Write32(SP + 24,V0); //+ 0x18
+	A1 += A2;
+	V0 = LO;
+	A1 += V0;
+	A1 = (int32_t)A1 >> 12;
+	EMU_Write32(A3,A1);
+	V1 = 0x80050000;
+	V1 = EMU_ReadS16(V1 + 30730); //+ 0x780A
+	V0 = EMU_ReadU32(SP + 16); //+ 0x10
+	EMU_SMultiply(V1,V0);
+	A0 = 0x80050000;
+	A0 = EMU_ReadS16(A0 + 30732); //+ 0x780C
+	V1 = LO;
+	V0 = EMU_ReadU32(SP + 20); //+ 0x14
+	EMU_SMultiply(A0,V0);
+	A0 = 0x80050000;
+	A0 = EMU_ReadS16(A0 + 30734); //+ 0x780E
+	A1 = LO;
+	V0 = EMU_ReadU32(SP + 24); //+ 0x18
+	EMU_SMultiply(A0,V0);
+	V1 += A1;
+	V0 = LO;
+	V1 += V0;
+	V1 = (int32_t)V1 >> 12;
+	EMU_Write32(A3 + 4,V1); //+ 0x4
+	V1 = 0x80050000;
+	V1 = EMU_ReadS16(V1 + 30736); //+ 0x7810
+	V0 = EMU_ReadU32(SP + 16); //+ 0x10
+	EMU_SMultiply(V1,V0);
+	A0 = 0x80050000;
+	A0 = EMU_ReadS16(A0 + 30738); //+ 0x7812
+	V1 = LO;
+	V0 = EMU_ReadU32(SP + 20); //+ 0x14
+	EMU_SMultiply(A0,V0);
+	A0 = 0x80050000;
+	A0 = EMU_ReadS16(A0 + 30740); //+ 0x7814
+	A1 = LO;
+	V0 = EMU_ReadU32(SP + 24); //+ 0x18
+	EMU_SMultiply(A0,V0);
+	V1 += A1;
+	V0 = LO;
+	V1 += V0;
+	V1 = (int32_t)V1 >> 12;
+	EMU_Write32(A3 + 8,V1); //+ 0x8
+	ZZ_CLOCKCYCLES(79,0x800193E4);
+ZZ_1922C_1B8:
+	EMU_Write32(S4 + 20,S3); //+ 0x14
+	V0 = EMU_ReadU32(T0 + 20); //+ 0x14
+	EMU_Write32(S4 + 24,V0); //+ 0x18
+	V1 = EMU_ReadU32(T0 + 24); //+ 0x18
+	V0 = S3 + 64;
+	EMU_Write32(S4 + 32,V0); //+ 0x20
+	EMU_Write32(S4 + 28,V1); //+ 0x1C
+	V0 = EMU_ReadU32(S3 + 24); //+ 0x18
+	if (!V0)
+	{
+		S1 = R0;
+		ZZ_CLOCKCYCLES(12,0x80019440);
+		goto ZZ_1922C_214;
+	}
+	S1 = R0;
+	S2 = S4;
+	S0 = 0x20;
+	ZZ_CLOCKCYCLES(14,0x8001941C);
+ZZ_1922C_1F0:
+	RA = 0x80019424; //ZZ_1922C_1F8
+	A0 = S3 + S0;
+	ZZ_CLOCKCYCLES(2,0x80015A98);
+	goto ZZ_15A98;
+ZZ_1922C_1F8:
+	EMU_Write32(S2 + 36,V0); //+ 0x24
+	S2 += 4;
+	V0 = EMU_ReadU32(S3 + 24); //+ 0x18
+	S1 += 1;
+	V0 = S1 < V0;
+	if (V0)
+	{
+		S0 += 4;
+		ZZ_CLOCKCYCLES(7,0x8001941C);
+		goto ZZ_1922C_1F0;
+	}
+	S0 += 4;
+	ZZ_CLOCKCYCLES(7,0x80019440);
+ZZ_1922C_214:
+	S4 += 64;
+	V0 = EMU_ReadU32(S6);
+	S7 += 1;
+	V0 = (int32_t)S7 < (int32_t)V0;
+	if (V0)
+	{
+		S5 += 64;
+		ZZ_CLOCKCYCLES(6,0x80019270);
+		goto ZZ_1922C_44;
+	}
+	S5 += 64;
+	ZZ_CLOCKCYCLES(6,0x80019458);
+ZZ_1922C_22C:
+	V0 = 0x80060000;
+	V0 = EMU_ReadU32(V0 - 15044); //+ 0xFFFFC53C
+	V1 = EMU_ReadU32(V0 + 4); //+ 0x4
+	V0 = 0x19;
+	if (V1 != V0)
+	{
+		V0 = 0xF;
+		ZZ_CLOCKCYCLES(7,0x800194A0);
+		goto ZZ_1922C_274;
+	}
+	V0 = 0xF;
+	V1 = 0x80060000;
+	V1 = EMU_ReadU32(V1 + 6356); //+ 0x18D4
+	if (V1 != V0)
+	{
+		ZZ_CLOCKCYCLES(12,0x800194A0);
+		goto ZZ_1922C_274;
+	}
+	A0 = 0x80060000;
+	A0 = EMU_ReadU32(A0 + 6576); //+ 0x19B0
+	A1 = 0x80060000;
+	A1 = EMU_ReadU32(A1 + 6584); //+ 0x19B8
+	RA = 0x800194A0; //ZZ_1922C_274
+	ZZ_CLOCKCYCLES(18,0x8001A460);
+	goto ZZ_1A460;
+ZZ_1922C_274:
+	RA = EMU_ReadU32(SP + 80); //+ 0x50
+	S7 = EMU_ReadU32(SP + 76); //+ 0x4C
+	S6 = EMU_ReadU32(SP + 72); //+ 0x48
+	S5 = EMU_ReadU32(SP + 68); //+ 0x44
+	S4 = EMU_ReadU32(SP + 64); //+ 0x40
+	S3 = EMU_ReadU32(SP + 60); //+ 0x3C
+	S2 = EMU_ReadU32(SP + 56); //+ 0x38
+	S1 = EMU_ReadU32(SP + 52); //+ 0x34
+	S0 = EMU_ReadU32(SP + 48); //+ 0x30
+	SP += 88;
+	ZZ_JUMPREGISTER_BEGIN(RA);
+	ZZ_CLOCKCYCLES_JR(12);
+	ZZ_JUMPREGISTER(0x80018080,ZZ_17A14_66C);
+	ZZ_JUMPREGISTER_END();
+#endif
+ZZ_MARK_TARGET(0x8001922C,0x80019270,ZZ_1922C);
+ZZ_MARK_TARGET(0x80019270,0x8001927C,ZZ_1922C_44);
+ZZ_MARK_TARGET(0x8001927C,0x800192A8,ZZ_1922C_50);
+ZZ_MARK_TARGET(0x800192A8,0x800193E4,ZZ_1922C_7C);
+ZZ_MARK_TARGET(0x800193E4,0x8001941C,ZZ_1922C_1B8);
+ZZ_MARK_TARGET(0x8001941C,0x80019424,ZZ_1922C_1F0);
+ZZ_MARK_TARGET(0x80019424,0x80019440,ZZ_1922C_1F8);
+ZZ_MARK_TARGET(0x80019440,0x80019458,ZZ_1922C_214);
+ZZ_MARK_TARGET(0x80019458,0x800194A0,ZZ_1922C_22C);
+ZZ_MARK_TARGET(0x800194A0,0x800194D0,ZZ_1922C_274);

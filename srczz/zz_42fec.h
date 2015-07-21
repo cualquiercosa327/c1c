@@ -1,0 +1,17 @@
+#ifdef ZZ_INCLUDE_CODE
+ZZ_42FEC:
+	GTE_SetRegister(0,EMU_ReadU32(A0));
+	GTE_SetRegister(1,EMU_ReadU32(A0 + 4)); //+ 0x4
+	GTE_MultiplyAdd_V0_Rotation_Translation();
+	EMU_Write32(A1,GTE_GetRegister(25));
+	EMU_Write32(A1 + 4,GTE_GetRegister(26)); //+ 0x4
+	EMU_Write32(A1 + 8,GTE_GetRegister(27)); //+ 0x8
+	V0 = GTE_GetRegister(63);
+	ZZ_JUMPREGISTER_BEGIN(RA);
+	EMU_Write32(A2,V0);
+	ZZ_CLOCKCYCLES_JR(10);
+	ZZ_JUMPREGISTER(0x80018194,ZZ_180CC_C8);
+	ZZ_JUMPREGISTER(0x8002499C,ZZ_248A0_FC);
+	ZZ_JUMPREGISTER_END();
+#endif
+ZZ_MARK_TARGET(0x80042FEC,0x80043014,ZZ_42FEC);

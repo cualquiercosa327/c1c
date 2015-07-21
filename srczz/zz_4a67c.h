@@ -1,0 +1,66 @@
+#ifdef ZZ_INCLUDE_CODE
+ZZ_4A67C:
+	SP -= 32;
+	EMU_Write32(SP + 28,RA); //+ 0x1C
+	EMU_Write32(SP + 24,S2); //+ 0x18
+	EMU_Write32(SP + 20,S1); //+ 0x14
+	EMU_Write32(SP + 16,S0); //+ 0x10
+	S1 = A1 << 16;
+	S1 = (int32_t)S1 >> 16;
+	S0 = S1 << 1;
+	S0 += S1;
+	S0 <<= 2;
+	S0 = S0 - S1;
+	S0 <<= 2;
+	S2 = A0 << 16;
+	S2 = (int32_t)S2 >> 16;
+	V0 = S2 << 2;
+	AT = 0x80060000;
+	AT += V0;
+	V0 = EMU_ReadU32(AT + 1048); //+ 0x418
+	S0 = S0 - S1;
+	S0 <<= 2;
+	RA = 0x8004A6D4; //ZZ_4A67C_58
+	S0 += V0;
+	ZZ_CLOCKCYCLES(22,0x8004D478);
+	goto ZZ_4D478;
+ZZ_4A67C_58:
+	RA = 0x8004A6DC; //ZZ_4A67C_60
+	ZZ_CLOCKCYCLES(2,0x8004D65C);
+	goto ZZ_4D65C;
+ZZ_4A67C_60:
+	V0 = EMU_ReadU8(S0 + 18); //+ 0x12
+	V1 = EMU_ReadU8(S0 + 18); //+ 0x12
+	V0 += S0;
+	EMU_Write8(V0 + 44,V1); //+ 0x2C
+	V0 = EMU_ReadU8(S0 + 18); //+ 0x12
+	A0 = S2;
+	EMU_Write8(S0 + 19,R0); //+ 0x13
+	EMU_Write8(S0 + 20,R0); //+ 0x14
+	V1 = 0x7F;
+	V0 <<= 1;
+	V0 += S0;
+	EMU_Write16(V0 + 78,V1); //+ 0x4E
+	V0 = EMU_ReadU8(S0 + 18); //+ 0x12
+	A1 = S1;
+	V1 = 0x40;
+	V0 += S0;
+	RA = 0x8004A724; //ZZ_4A67C_A8
+	EMU_Write8(V0 + 23,V1); //+ 0x17
+	ZZ_CLOCKCYCLES(18,0x8004AEB8);
+	goto ZZ_4AEB8;
+ZZ_4A67C_A8:
+	EMU_Write32(S0 + 136,V0); //+ 0x88
+	RA = EMU_ReadU32(SP + 28); //+ 0x1C
+	S2 = EMU_ReadU32(SP + 24); //+ 0x18
+	S1 = EMU_ReadU32(SP + 20); //+ 0x14
+	S0 = EMU_ReadU32(SP + 16); //+ 0x10
+	ZZ_JUMPREGISTER_BEGIN(RA);
+	SP += 32;
+	ZZ_CLOCKCYCLES_JR(7);
+	ZZ_JUMPREGISTER_END();
+#endif
+ZZ_MARK_TARGET(0x8004A67C,0x8004A6D4,ZZ_4A67C);
+ZZ_MARK_TARGET(0x8004A6D4,0x8004A6DC,ZZ_4A67C_58);
+ZZ_MARK_TARGET(0x8004A6DC,0x8004A724,ZZ_4A67C_60);
+ZZ_MARK_TARGET(0x8004A724,0x8004A740,ZZ_4A67C_A8);
