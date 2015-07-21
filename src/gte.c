@@ -32,6 +32,11 @@ void GTE_NormalClip(void)
 	PCSX_ExecuteCOP(2,0x1400006);
 }
 
+void GTE_NormalColorTriple(void)
+{
+  PCSX_ExecuteCOP(2,0x118043F);
+}
+
 void GTE_Multiply_V0_Rotation(void)
 {
 	PCSX_ExecuteCOP(2,0x486012);

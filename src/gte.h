@@ -83,6 +83,7 @@ extern void GTE_RotateTranslateProjectSingle(void);
 extern void GTE_RotateTranslateProjectTriple(void);
 
 extern void GTE_NormalClip(void);
+extern void GTE_NormalColorTriple(void);
 
 extern void GTE_Multiply_V0_Rotation(void);
 extern void GTE_Multiply_V1_Rotation(void);
