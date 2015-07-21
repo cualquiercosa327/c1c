@@ -16,7 +16,7 @@
 
 // Application information
 
-#define APP_NAME "C2C"
+#define APP_NAME "C1C"
 
 #define APP_VERSION_MAJOR 0
 #define APP_VERSION_MINOR 0
