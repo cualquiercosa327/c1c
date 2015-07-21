@@ -5,9 +5,9 @@
 #include "zz_11c8c.h"
 #include "zz_11ca0.h"
 #include "zz_11d30.h"
-#include "zz_11d88.h"
+ZZ_MARK_NATIVE(0x80011D88,0x80011DD0,ZZ_11D88,CORE_Main);
 #include "zz_11dd0.h"
-#include "zz_11fc4.h"
+ZZ_MARK_NATIVE(0x80011FC4,0x80012660,ZZ_11FC4,CORE_Loop);
 #include "zz_12660.h"
 #include "zz_126c0.h"
 #include "zz_12820.h"
@@ -342,7 +342,7 @@
 #include "zz_3d740.h"
 #include "zz_3df9c.h"
 #include "zz_3dfac.h"
-#include "zz_3e018.h"
+ZZ_MARK_NATIVE(0x8003E018,0x8003E0C0,Main,CORE_Start);
 #include "zz_3e0c0.h"
 #include "zz_3e198.h"
 #include "zz_3e1a8.h"
