@@ -35,9 +35,9 @@ namespace PSXDiscompile
             else if (copid == 2)
             {
                 if (imm == 0)
-                    p.WriteLine("EMU_Write32({0},GTE_GetDataRegister({1}));",rs,coprt);
+                    p.WriteLine("EMU_Write32({0},GTE_GetRegister({1}));",rs,coprt);
                 else
-                    p.WriteLine("EMU_Write32({0} + {1},GTE_GetDataRegister({2})); //+ 0x{1:X}",rs,imm,coprt);
+                    p.WriteLine("EMU_Write32({0} + {1},GTE_GetRegister({2})); //+ 0x{1:X}",rs,imm,coprt);
             }
             else
             {

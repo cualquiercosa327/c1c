@@ -29,7 +29,7 @@ namespace PSXDiscompile
             }
             else if (copid == 2)
             {
-                p.WriteLine("GTE_SetControlRegister({0},{1});",coprd,rs);
+                p.WriteLine("GTE_SetRegister({0},{1});",coprd+32,rs);
             }
             else
             {
