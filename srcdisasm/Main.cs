@@ -9,7 +9,7 @@ namespace PSXDiscompile
 
         private static void Main()
         {
-            p = Program.LoadEXE(@"..\SCES_009.67");
+            p = Program.LoadEXE(@"..\SCUS_949.00");
             DefineSwitchTables();
             DefineFunctionPointers();
             DefineWeirdReturns();
@@ -26,40 +26,45 @@ namespace PSXDiscompile
         private static void DefineSwitchTables()
         {
             // Compiler-generated switch-case tables
-            p[0x12048].DefineSwitchTable(0x10068,26);
-            p[0x13354].DefineSwitchTable(0x10138,30);
-            p[0x15298].DefineSwitchTable(0x101B0,59);
-            p[0x16050].DefineSwitchTable(0x1029C,8);
-            p[0x23F38].DefineSwitchTable(0x10438,11);
-            p[0x26754].DefineSwitchTable(0x10468,6);
-            p[0x270B0].DefineSwitchTable(0x10480,11);
-            p[0x32114].DefineSwitchTable(0x10544,19);
-            p[0x333A4].DefineSwitchTable(0x10590,15);
-            p[0x34810].DefineSwitchTable(0x10668,5);
-            p[0x34974].DefineSwitchTable(0x106DC,9);
-            p[0x4761C].DefineSwitchTable(0x10B20,5);
-            p[0x497AC].DefineSwitchTable(0x10C2C,45);
-            p[0x516C0].DefineSwitchTable(0x110DC,8);
-            p[0x51780].DefineSwitchTable(0x110FC,8);
-            p[0x51C84].DefineSwitchTable(0x1111C,7);
-            p[0x51D64].DefineSwitchTable(0x1113C,7);
-            p[0x12740].DefineSwitchTable(0x10120,6);
-            p[0x379D8].DefineSwitchTable(0x10838,15);
-            p[0x369E8].DefineSwitchTable(0x10704,19);
-            p[0x37C80].DefineSwitchTable(0x10878,10);
-            p[0x37F08].DefineSwitchTable(0x108A0,22);
-            p[0x1C154].DefineSwitchTable(0x102BC,7);
-            p[0x1D05C].DefineSwitchTable(0x102D8,5);
-            p[0x1FD24].DefineSwitchTable(0x102EC,37);
-            p[0x2A510].DefineSwitchTable(0x104AC,38);
-            p[0x340B0].DefineSwitchTable(0x105D0,38);
-            p[0x384C8].DefineSwitchTable(0x108F8,8);
-            p[0x38A00].DefineSwitchTable(0x10918,7);
-            p[0x391F8].DefineSwitchTable(0x10938,6);
-            p[0x56820].DefineSwitchTable(0x11198,6);
+            p[0x1277C].DefineSwitchTable(0x10088,26);
+            p[0x129A0].DefineSwitchTable(0x100F0,15);
+            p[0x12AB4].DefineSwitchTable(0x10130,15);
+            p[0x13D98].DefineSwitchTable(0x10170,30);
+            p[0x16198].DefineSwitchTable(0x101E8,9);
+            p[0x16C54].DefineSwitchTable(0x102D8,28);
+            p[0x16D9C].DefineSwitchTable(0x10348,28);
+            p[0x1EB68].DefineSwitchTable(0x104F8,7);
+            p[0x21F64].DefineSwitchTable(0x10760,16);
+            p[0x222EC].DefineSwitchTable(0x107A0,10);
+            p[0x2265C].DefineSwitchTable(0x107C8,12);
+            p[0x23280].DefineSwitchTable(0x107F8,6);
+            p[0x2339C].DefineSwitchTable(0x10810,8);
+            p[0x2383C].DefineSwitchTable(0x10830,7);
+            p[0x24D0C].DefineSwitchTable(0x10850,5);
+            p[0x26314].DefineSwitchTable(0x10864,42);
+            p[0x27E04].DefineSwitchTable(0x1090C,5);
+            p[0x2B358].DefineSwitchTable(0x10924,9);
+            p[0x2C3FC].DefineSwitchTable(0x1094C,12);
+            p[0x2EBEC].DefineSwitchTable(0x1097C,37);
+            p[0x2ECF8].DefineSwitchTable(0x10A14,53);
+            p[0x2EE88].DefineSwitchTable(0x10AEC,53);
+            p[0x2FF44].DefineSwitchTable(0x10BD8,48);
+            p[0x30978].DefineSwitchTable(0x10C98,13);
+            p[0x31344].DefineSwitchTable(0x10CD0,49);
+            p[0x31A7C].DefineSwitchTable(0x10D98,5);
+            p[0x31F00].DefineSwitchTable(0x10DAC,15);
+            p[0x31F74].DefineSwitchTable(0x10DEC,11);
+            p[0x320A8].DefineSwitchTable(0x10E1C,15);
+            p[0x3A9D4].DefineSwitchTable(0x10EC0,9);
+            p[0x3D510].DefineSwitchTable(0x10EE8,11);
+            p[0x3DA00].DefineSwitchTable(0x10F3C,45);
+            p[0x43DFC].DefineSwitchTable(0x1156C,5);
+            p[0x483D8].DefineSwitchTable(0x116A8,8);
+            p[0x484A8].DefineSwitchTable(0x116C8,8);
+            p[0x48C4C].DefineSwitchTable(0x11708,8);
 
             // GOOL Opcode Jump Table
-            p[0x3A328].DefineSwitchTable(0x5C7AC,79);
+            p[0x20250].DefineSwitchTable(0x10518,146);
         }
 
         private static void DefineFunctionPointers()
@@ -68,140 +73,131 @@ namespace PSXDiscompile
 
             // Subsystems Function 2
             fs = new List<Word>();
-            fs.Add(p[0x16328]);
-            fs.Add(p[0x299DC]);
-            fs.Add(p[0x243FC]);
-            fs.Add(p[0x2CDCC]);
-            fs.Add(p[0x1F0AC]);
-            fs.Add(p[0x327B4]);
-            fs.Add(p[0x34034]);
-            fs.Add(p[0x2FFDC]);
-            fs.Add(p[0x27CAC]);
-            p[0x14FC0].AddCalleeList(fs);
+            fs.Add(p[0x16C18]);
+            fs.Add(p[0x29A58]);
+            fs.Add(p[0x2D638]);
+            fs.Add(p[0x1AAD8]);
+            fs.Add(p[0x2FDE0]);
+            fs.Add(p[0x31244]);
+            fs.Add(p[0x31BAC]);
+            fs.Add(p[0x2E8A4]);
+            p[0x15E40].AddCalleeList(fs);
 
             // Subsystems Function 3
             fs = new List<Word>();
-            fs.Add(p[0x1FC0C]);
-            fs.Add(p[0x1F260]);
-            p[0x152FC].AddCalleeList(fs);
+            fs.Add(p[0x253A0]);
+            fs.Add(p[0x1AC60]);
+            fs.Add(p[0x31BF8]);
+            p[0x163E0].AddCalleeList(fs);
 
             // Subsystems Function 4
             fs = new List<Word>();
-            fs.Add(p[0x1747C]);
-            fs.Add(p[0x172BC]);
-            fs.Add(p[0x20024]);
-            fs.Add(p[0x18AE8]);
-            p[0x127F8].AddCalleeList(fs);
-            p[0x12A50].AddCalleeList(fs);
+            fs.Add(p[0x1767C]);
+            fs.Add(p[0x25628]);
+            fs.Add(p[0x256DC]);
+            p[0x13060].AddCalleeList(fs);
+            p[0x1328C].AddCalleeList(fs);
 
             // Subsystems Function 5
             fs = new List<Word>();
-            fs.Add(p[0x20178]);
-            p[0x12C30].AddCalleeList(fs);
+            p[0x13450].AddCalleeList(fs);
 
             // Subsystems Function 6
             fs = new List<Word>();
-            fs.Add(p[0x1642C]);
-            fs.Add(p[0x29A3C]);
-            fs.Add(p[0x2CE28]);
-            fs.Add(p[0x1F220]);
-            fs.Add(p[0x32894]);
-            fs.Add(p[0x346B8]);
-            fs.Add(p[0x2FFF4]);
-            fs.Add(p[0x27E10]);
-            p[0x153D8].AddCalleeList(fs);
+            fs.Add(p[0x16D14]);
+            fs.Add(p[0x29AD8]);
+            fs.Add(p[0x2D694]);
+            fs.Add(p[0x1AC28]);
+            fs.Add(p[0x2FFC0]);
+            fs.Add(p[0x31938]);
+            fs.Add(p[0x32298]);
+            fs.Add(p[0x2E8BC]);
+            p[0x16468].AddCalleeList(fs);
 
             // Argument
             fs = new List<Word>();
-            fs.Add(p[0x376D8]);
-            fs.Add(p[0x376E0]);
-            fs.Add(p[0x37804]);
-            fs.Add(p[0x38414]);
-            fs.Add(p[0x38998]);
-            fs.Add(p[0x38D94]);
-            fs.Add(p[0x38EAC]);
-            fs.Add(p[0x38FA0]);
-            fs.Add(p[0x390AC]);
-            fs.Add(p[0x39198]);
-            fs.Add(p[0x39CAC]);
-            fs.Add(p[0x39D3C]);
-            fs.Add(p[0x39DAC]);
-            fs.Add(p[0x39EA0]);
-            p[0x3A264].AddCalleeList(fs);
+            fs.Add(p[0x1DA0C]);
+            p[0x1B66C].AddCalleeList(fs);
+            p[0x1B8A4].AddCalleeList(fs);
 
             // Argument
             fs = new List<Word>();
-            fs.Add(p[0x392A4]);
-            fs.Add(p[0x3939C]);
-            fs.Add(p[0x39470]);
-            fs.Add(p[0x395A8]);
-            fs.Add(p[0x3975C]);
-            fs.Add(p[0x3991C]);
-            p[0x3A28C].AddCalleeList(fs);
+            fs.Add(p[0x1D11C]);
+            fs.Add(p[0x1D1E0]);
+            fs.Add(p[0x24CC8]);
+            p[0x1B75C].AddCalleeList(fs);
+            p[0x1B9C8].AddCalleeList(fs);
 
-            // 8005CA64
+            // Argument
             fs = new List<Word>();
-            p[0x47B0C].AddCalleeList(fs);
-            p[0x47D94].AddCalleeList(fs);
-            p[0x48204].AddCalleeList(fs);
+            fs.Add(p[0x1BA90]);
+            fs.Add(p[0x1BAB0]);
+            fs.Add(p[0x1BCA4]);
+            p[0x1B7CC].AddCalleeList(fs);
 
-            // 8005CA68
+            // Argument
             fs = new List<Word>();
-            p[0x47AD8].AddCalleeList(fs);
-            p[0x47D60].AddCalleeList(fs);
-            p[0x481D0].AddCalleeList(fs);
+            fs.Add(p[0x1B92C]);
+            p[0x1BA54].AddCalleeList(fs);
 
-            // 8005DFB0
+            // Argument
             fs = new List<Word>();
-            p[0x4B7C4].AddCalleeList(fs);
-            p[0x4BF64].AddCalleeList(fs);
-            p[0x4BFE8].AddCalleeList(fs);
-            p[0x4C0F8].AddCalleeList(fs);
-            p[0x4C160].AddCalleeList(fs);
-            p[0x4C214].AddCalleeList(fs);
-            p[0x4C280].AddCalleeList(fs);
-            p[0x4C310].AddCalleeList(fs);
-            p[0x4C42C].AddCalleeList(fs);
-            p[0x4C454].AddCalleeList(fs);
-            p[0x4C768].AddCalleeList(fs);
-            p[0x4C824].AddCalleeList(fs);
-            p[0x4C910].AddCalleeList(fs);
-            p[0x4C994].AddCalleeList(fs);
-            p[0x4CAA4].AddCalleeList(fs);
-            p[0x4CBEC].AddCalleeList(fs);
+            fs.Add(p[0x2C3B8]);
+            p[0x38CEC].AddCalleeList(fs);
 
-            // 8005EAA0
+            // for start? __do_global_dtors? vsynccallbacks (3)
+          
+            // 8003F650; GPU printf call
             fs = new List<Word>();
-            p[0x4FA60].AddCalleeList(fs);
-
-            // 8005F278
+            fs.Add(p[0x3D730]);
+            p[0x3F65C].AddCalleeList(fs);
+            p[0x3F6A8].AddCalleeList(fs);
+            p[0x3F6EC].AddCalleeList(fs);
+            p[0x3FC44].AddCalleeList(fs);
+            p[0x3FCA8].AddCalleeList(fs);
+            p[0x3FCF8].AddCalleeList(fs);
+            p[0x3FD44].AddCalleeList(fs);
+            p[0x3FD6C].AddCalleeList(fs);
+            p[0x3FD88].AddCalleeList(fs);
+            p[0x3FDA4].AddCalleeList(fs);
+            p[0x3FEDC].AddCalleeList(fs);
+            p[0x3FF60].AddCalleeList(fs);
+            p[0x40078].AddCalleeList(fs);
+            p[0x400E0].AddCalleeList(fs);
+            p[0x40194].AddCalleeList(fs);
+            p[0x40200].AddCalleeList(fs);
+            p[0x40290].AddCalleeList(fs);
+            p[0x403AC].AddCalleeList(fs);
+            p[0x403D4].AddCalleeList(fs);
+            p[0x4064C].AddCalleeList(fs);
+            p[0x40708].AddCalleeList(fs);
+            p[0x407F4].AddCalleeList(fs);
+            p[0x40878].AddCalleeList(fs);
+            p[0x40948].AddCalleeList(fs);
+            p[0x40A58].AddCalleeList(fs);
+            
             fs = new List<Word>();
-            p[0x55134].AddCalleeList(fs);
-            p[0x55184].AddCalleeList(fs);
-
-            // 8005F27C
-            fs = new List<Word>();
-            p[0x55120].AddCalleeList(fs);
-
-            // 8005F5D0
-            fs = new List<Word>();
-            p[0x4A60C].AddCalleeList(fs);
-
-            // 800697F8
-            fs = new List<Word>();
-            p[0x574B4].AddCalleeList(fs);
-
-            // 800699AC
-            fs = new List<Word>();
-            p[0x574E0].AddCalleeList(fs);
+            fs.Add(p[0x4BB7C]);
+            p[0x4B850].AddCalleeList(fs);
+            p[0x4B8A0].AddCalleeList(fs);        
         }
 
         private static void DefineWeirdReturns()
         {
-            p[0x3A978].IsWeirdReturn = true;
-            p[0x3A98C].IsWeirdReturn = true;
-            p[0x3A994].IsWeirdReturn = true;
-            p[0x3AA34].IsWeirdReturn = true;
+
+            p[0x33D08].IsWeirdReturn = true;
+            p[0x33D8C].IsWeirdReturn = true;
+            p[0x33E50].IsWeirdReturn = true;
+            p[0x33EF0].IsWeirdReturn = true;
+            p[0x34028].IsWeirdReturn = true;
+            p[0x340AC].IsWeirdReturn = true;
+            p[0x34170].IsWeirdReturn = true;
+            p[0x34208].IsWeirdReturn = true;
+            p[0x37ECC].IsWeirdReturn = true;
+            p[0x37F20].IsWeirdReturn = true;
+            p[0x37F70].IsWeirdReturn = true;
+            p[0x38058].IsWeirdReturn = true;
+            p[0x4CBF4].IsWeirdReturn = true;
             p[0x3AA40].IsWeirdReturn = true;
             p[0x3AA48].IsWeirdReturn = true;
             p[0x3AAD4].IsWeirdReturn = true;
@@ -212,158 +208,312 @@ namespace PSXDiscompile
         {
             // Stubs for BIOS calls
             // BIOS addresses are too far away to use a direct call/jump
-            p[0x49410].DirectBranch = 0xB0;
-            p[0x49428].DirectBranch = 0xB0;
-            p[0x49470].DirectBranch = 0xA0;
-            p[0x49480].DirectBranch = 0xA0;
-            p[0x49490].DirectBranch = 0xA0;
-            p[0x494A0].DirectBranch = 0xA0;
-            p[0x494C0].DirectBranch = 0xA0;
-            p[0x494D0].DirectBranch = 0xA0;
-            p[0x494E0].DirectBranch = 0xA0;
-            p[0x49F48].DirectBranch = 0xA0;
-            p[0x49F68].DirectBranch = 0xB0;
-            p[0x49F78].DirectBranch = 0xB0;
-            p[0x49F88].DirectBranch = 0xB0;
-            p[0x49F98].DirectBranch = 0xB0;
-            p[0x49FA8].DirectBranch = 0xB0;
-            p[0x4A058].DirectBranch = 0xB0;
-            p[0x4A500].DirectBranch = 0xB0;
-            p[0x4A510].DirectBranch = 0xB0;
-            p[0x4A520].DirectBranch = 0xB0;
-            p[0x4A540].DirectBranch = 0xC0;
-            p[0x4A550].DirectBranch = 0xC0;
-            p[0x4A5F0].DirectBranch = 0xA0;
-            p[0x4A904].DirectBranch = 0xC0;
-            p[0x4EEB4].DirectBranch = 0xA0;
-            p[0x51304].DirectBranch = 0xB0;
-            p[0x5B384].DirectBranch = 0xB0;
-            p[0x5B394].DirectBranch = 0xB0;
-            p[0x5B3A4].DirectBranch = 0xB0;
-            p[0x49450].DirectBranch = 0xA0;
-            p[0x49460].DirectBranch = 0xA0;
-            p[0x494B0].DirectBranch = 0xA0;
-            p[0x49D4C].DirectBranch = 0xA0;
-            p[0x49FD8].DirectBranch = 0xB0;
-            p[0x49FE8].DirectBranch = 0xB0;
-            p[0x49FF8].DirectBranch = 0xB0;
-            p[0x4A008].DirectBranch = 0xB0;
-            p[0x4A018].DirectBranch = 0xB0;
-            p[0x4A028].DirectBranch = 0xB0;
-            p[0x4A038].DirectBranch = 0xB0;
-            p[0x4A048].DirectBranch = 0xB0;
-            p[0x5B244].DirectBranch = 0xA0;
-            p[0x5B254].DirectBranch = 0xA0;
-            p[0x5B264].DirectBranch = 0xB0;
-            p[0x5B274].DirectBranch = 0xB0;
-            p[0x5B284].DirectBranch = 0xB0;
-            p[0x49440].DirectBranch = 0xA0;
-            p[0x49F58].DirectBranch = 0xB0;
-            p[0x4A530].DirectBranch = 0xB0;
-            p[0x4B024].DirectBranch = 0xA0;
-            p[0x4B03C].DirectBranch = 0xA0;
-            p[0x4B054].DirectBranch = 0xB0;
-            p[0x4B064].DirectBranch = 0xB0;
-            p[0x4B074].DirectBranch = 0xB0;
-            p[0x5B3C4].DirectBranch = 0xB0;
-            p[0x4F4A4].DirectBranch = 0xB0;
-            p[0x4A6D0].DirectBranch = 0xB0;
-            p[0x4A638].DirectBranch = 0xB0;
-            p[0x4A598].DirectBranch = 0xB0;
+            p[0x3D684].DirectBranch = 0xB0;
+            p[0x3D694].DirectBranch = 0xA0;
+            p[0x3D6A4].DirectBranch = 0xA0;
+            p[0x3D6B4].DirectBranch = 0xA0;
+            p[0x3D6C4].DirectBranch = 0xA0;
+            p[0x3D6D4].DirectBranch = 0xA0;
+            p[0x3D6E4].DirectBranch = 0xA0;
+            p[0x3D6F4].DirectBranch = 0xA0;
+            p[0x3D704].DirectBranch = 0xA0;
+            p[0x3D714].DirectBranch = 0xA0;
+            p[0x3D724].DirectBranch = 0xA0;
+            p[0x3D734].DirectBranch = 0xA0;
+            p[0x3DFA0].DirectBranch = 0xA0;
+            p[0x3E19C].DirectBranch = 0xA0;
+            p[0x3E1AC].DirectBranch = 0xB0;
+            p[0x3E1BC].DirectBranch = 0xB0;
+            p[0x3E1CC].DirectBranch = 0xB0;
+            p[0x3E1DC].DirectBranch = 0xB0;
+            p[0x3E1EC].DirectBranch = 0xB0;
+            p[0x3E21C].DirectBranch = 0xB0;
+            p[0x3E1AC].DirectBranch = 0xB0;
+            p[0x3E1BC].DirectBranch = 0xB0;
+            p[0x3E1CC].DirectBranch = 0xB0;
+            p[0x3E1DC].DirectBranch = 0xB0;
+            p[0x3E1EC].DirectBranch = 0xB0;
+            p[0x3E1FC].DirectBranch = 0xB0;
+            p[0x3E20C].DirectBranch = 0xB0;
+            p[0x3E21C].DirectBranch = 0xB0;
+            p[0x3E22C].DirectBranch = 0xB0;
+            p[0x3E23C].DirectBranch = 0xB0;
+            p[0x3E24C].DirectBranch = 0xB0;
+            p[0x3E25C].DirectBranch = 0xB0;
+            p[0x3E26C].DirectBranch = 0xB0;
+            p[0x3E27C].DirectBranch = 0xB0;
+            p[0x3E28C].DirectBranch = 0xB0;
+            p[0x3E4B4].DirectBranch = 0xB0;
+            p[0x3E4C4].DirectBranch = 0xB0;
+            p[0x3E4D4].DirectBranch = 0xB0;
+            p[0x3E4E4].DirectBranch = 0xB0;
+            p[0x3E6D8].DirectBranch = 0xB0;
+            p[0x3E6E8].DirectBranch = 0xC0;
+            p[0x3EE08].DirectBranch = 0xA0;
+            p[0x3EE18].DirectBranch = 0xA0;
+            p[0x3EE28].DirectBranch = 0xB0;
+            p[0x3EE38].DirectBranch = 0xB0;
+            p[0x3EE48].DirectBranch = 0xB0;
+            p[0x42B10].DirectBranch = 0xA0;
+            p[0x43240].DirectBranch = 0xA0;
+            p[0x43358].DirectBranch = 0xB0;
+            p[0x47ED8].DirectBranch = 0xB0;
+            p[0x51428].DirectBranch = 0xA0;
+            p[0x51438].DirectBranch = 0xA0;
+            p[0x51448].DirectBranch = 0xB0;
+            p[0x51458].DirectBranch = 0xB0;
+            p[0x51468].DirectBranch = 0xB0;
+            p[0x51478].DirectBranch = 0xB0;
+            p[0x51488].DirectBranch = 0xB0;
         }
 
         private static void DefineOther()
         {
             // Strange -0 -n construct
-            p[0x3B984].AddDestination(0x3B9A4); //  -0 words
-            p[0x3B984].AddDestination(0x3B994); //  -4 words
-            p[0x3B9F8].AddDestination(0x3BA3C); //  -0 words
-            p[0x3B9F8].AddDestination(0x3BA14); // -10 words
-            p[0x3BA94].AddDestination(0x3BAD8); //  -0 words
-            p[0x3BA94].AddDestination(0x3BAB0); // -10 words
-            p[0x3BC44].AddDestination(0x3BC74); //  -0 words
-            p[0x3BC44].AddDestination(0x3BC64); //  -4 words
-            p[0x3BC44].AddDestination(0x3BC54); //  -8 words
-            p[0x3BCC8].AddDestination(0x3BD34); //  -0 words
-            p[0x3BCC8].AddDestination(0x3BD0C); // -10 words
-            p[0x3BCC8].AddDestination(0x3BCE4); // -20 words
-            p[0x3BD8C].AddDestination(0x3BDF8); //  -0 words
-            p[0x3BD8C].AddDestination(0x3BDD0); // -10 words
-            p[0x3BD8C].AddDestination(0x3BDA8); // -20 words
+            p[0x33D08].AddDestination(0x33D38); //  -0 words
+            p[0x33D08].AddDestination(0x33D28); //  -4 words
+            p[0x33D08].AddDestination(0x33D18); //  -8 words
+            p[0x33D8C].AddDestination(0x33DF8); //  -0 words
+            p[0x33D8C].AddDestination(0x33DD0); // -10 words
+            p[0x33D8C].AddDestination(0x33DA8); // -20 words
+            p[0x33E50].AddDestination(0x33EBC); //  -0 words
+            p[0x33E50].AddDestination(0x33E94); // -10 words
+            p[0x33E50].AddDestination(0x33E6C); // -20 words
+            p[0x34028].AddDestination(0x34058); //  -0 words
+            p[0x34028].AddDestination(0x34048); //  -4 words
+            p[0x34028].AddDestination(0x34038); //  -8 words
+            p[0x340AC].AddDestination(0x34118); //  -0 words
+            p[0x340AC].AddDestination(0x340F0); // -10 words
+            p[0x340AC].AddDestination(0x340C8); // -20 words
+            p[0x34170].AddDestination(0x341DC); //  -0 words
+            p[0x34170].AddDestination(0x341B4); // -10 words
+            p[0x34170].AddDestination(0x3418C); // -20 words
 
             // *n skip construct
-            p[0x3BB0C].AddDestination(0x3BB14); // 0*8 words
-            p[0x3BB0C].AddDestination(0x3BB34); // 1*8 words
-            p[0x3BB0C].AddDestination(0x3BB54); // 2*8 words
-            p[0x3BB0C].AddDestination(0x3BB74); // 3*8 words
-            p[0x3BB0C].AddDestination(0x3BB94); // 4*8 words
-            p[0x3BB0C].AddDestination(0x3BBB4); // 5*8 words
-            p[0x3BE24].AddDestination(0x3BE2C); // 0*8 words
-            p[0x3BE24].AddDestination(0x3BE4C); // 1*8 words
-            p[0x3BE24].AddDestination(0x3BE6C); // 2*8 words
-            p[0x3BE24].AddDestination(0x3BE8C); // 3*8 words
-            p[0x3BE24].AddDestination(0x3BEAC); // 4*8 words
-            p[0x3BE24].AddDestination(0x3BECC); // 5*8 words
+            p[0x33EF0].AddDestination(0x33EF8); // 0*8 words
+            p[0x33EF0].AddDestination(0x33F18); // 1*8 words
+            p[0x33EF0].AddDestination(0x33F38); // 2*8 words
+            p[0x33EF0].AddDestination(0x33F58); // 3*8 words
+            p[0x33EF0].AddDestination(0x33F78); // 4*8 words
+            p[0x33EF0].AddDestination(0x33F98); // 5*8 words
+            p[0x34208].AddDestination(0x34210); // 0*8 words
+            p[0x34208].AddDestination(0x34230); // 1*8 words
+            p[0x34208].AddDestination(0x34250); // 2*8 words
+            p[0x34208].AddDestination(0x34270); // 3*8 words
+            p[0x34208].AddDestination(0x34290); // 4*8 words
+            p[0x34208].AddDestination(0x342B0); // 5*8 words
+
             // potential for -1*2 here for infinite loop or what
-            p[0x3C3A4].AddDestination(0x3C3AC); // 0*2 words
-            p[0x3C3A4].AddDestination(0x3C3B4); // 1*2 words
-            p[0x3C3A4].AddDestination(0x3C3BC); // 2*2 words
-            p[0x3C3A4].AddDestination(0x3C3C4); // 3*2 words
-            p[0x3C3A4].AddDestination(0x3C3CC); // 4*2 words
-            p[0x3C3A4].AddDestination(0x3C3D4); // 5*2 words
-            p[0x3C3A4].AddDestination(0x3C3DC); // 6*2 words
-            p[0x3C3F8].AddDestination(0x3C400); // 0*2 words
-            p[0x3C3F8].AddDestination(0x3C408); // 1*2 words
-            p[0x3C3F8].AddDestination(0x3C410); // 2*2 words
-            p[0x3C3F8].AddDestination(0x3C418); // 3*2 words
-            p[0x3C3F8].AddDestination(0x3C420); // 4*2 words
-            p[0x3C3F8].AddDestination(0x3C428); // 5*2 words
-            p[0x3C3F8].AddDestination(0x3C430); // 6*2 words
-            p[0x3C3F8].AddDestination(0x3C438); // 7*2 words
-            p[0x3C448].AddDestination(0x3C450); //  0*2 words
-            p[0x3C448].AddDestination(0x3C458); //  1*2 words
-            p[0x3C448].AddDestination(0x3C460); //  2*2 words
-            p[0x3C448].AddDestination(0x3C468); //  3*2 words
-            p[0x3C448].AddDestination(0x3C470); //  4*2 words
-            p[0x3C448].AddDestination(0x3C478); //  5*2 words
-            p[0x3C448].AddDestination(0x3C480); //  6*2 words
-            p[0x3C448].AddDestination(0x3C488); //  7*2 words
-            p[0x3C448].AddDestination(0x3C490); //  8*2 words
-            p[0x3C448].AddDestination(0x3C498); //  9*2 words
-            p[0x3C448].AddDestination(0x3C4A0); // 10*2 words
-            p[0x3C448].AddDestination(0x3C4A8); // 11*2 words
-            p[0x3C448].AddDestination(0x3C4B0); // 12*2 words
-            p[0x3C448].AddDestination(0x3C4B8); // 13*2 words
-            p[0x3C448].AddDestination(0x3C4C0); // 14*2 words
-            p[0x3C448].AddDestination(0x3C4C8); // 15*2 words
-            p[0x3C448].AddDestination(0x3C4D0); // 16*2 words
-            p[0x3C448].AddDestination(0x3C4D8); // 17*2 words
-            p[0x3C448].AddDestination(0x3C4E0); // 18*2 words
-            p[0x3C448].AddDestination(0x3C4E8); // 19*2 words
-            p[0x3C448].AddDestination(0x3C4F0); // 20*2 words
-            p[0x3C448].AddDestination(0x3C4F8); // 21*2 words
-            p[0x3C448].AddDestination(0x3C500); // 22*2 words
-            p[0x3C448].AddDestination(0x3C508); // 23*2 words
-            p[0x3C448].AddDestination(0x3C510); // 24*2 words
-            p[0x3C448].AddDestination(0x3C518); // 25*2 words
-            p[0x3C530].AddDestination(0x3C538); // 0*2 words
-            p[0x3C530].AddDestination(0x3C540); // 1*2 words
-            p[0x3C530].AddDestination(0x3C548); // 2*2 words
-            p[0x3C530].AddDestination(0x3C550); // 3*2 words
-            p[0x3C530].AddDestination(0x3C558); // 4*2 words
-            p[0x3C530].AddDestination(0x3C560); // 5*2 words
-            p[0x3C530].AddDestination(0x3C568); // 6*2 words
-        }
+            p[0x37ECC].AddDestination(0x37ED4); // 0*2 words
+            p[0x37ECC].AddDestination(0x37EDC); // 1*2 words
+            p[0x37ECC].AddDestination(0x37EE4); // 2*2 words
+            p[0x37ECC].AddDestination(0x37EEC); // 3*2 words
+            p[0x37ECC].AddDestination(0x37EF4); // 4*2 words
+            p[0x37ECC].AddDestination(0x37EFC); // 5*2 words
+            p[0x37ECC].AddDestination(0x37F04); // 6*2 words
+            p[0x37F20].AddDestination(0x37F28); // 0*2 words
+            p[0x37F20].AddDestination(0x37F30); // 1*2 words
+            p[0x37F20].AddDestination(0x37F38); // 2*2 words
+            p[0x37F20].AddDestination(0x37F40); // 3*2 words
+            p[0x37F20].AddDestination(0x37F48); // 4*2 words
+            p[0x37F20].AddDestination(0x37F50); // 5*2 words
+            p[0x37F20].AddDestination(0x37F58); // 6*2 words
+            p[0x37F20].AddDestination(0x37F60); // 7*2 words
+            p[0x37F70].AddDestination(0x37F78); //  0*2 words
+            p[0x37F70].AddDestination(0x37F80); //  1*2 words
+            p[0x37F70].AddDestination(0x37F88); //  2*2 words
+            p[0x37F70].AddDestination(0x37F90); //  3*2 words
+            p[0x37F70].AddDestination(0x37F98); //  4*2 words
+            p[0x37F70].AddDestination(0x37FA0); //  5*2 words
+            p[0x37F70].AddDestination(0x37FA8); //  6*2 words
+            p[0x37F70].AddDestination(0x37FB0); //  7*2 words
+            p[0x37F70].AddDestination(0x37FB8); //  8*2 words
+            p[0x37F70].AddDestination(0x37FC0); //  9*2 words
+            p[0x37F70].AddDestination(0x37FC8); // 10*2 words
+            p[0x37F70].AddDestination(0x37FD0); // 11*2 words
+            p[0x37F70].AddDestination(0x37FD8); // 12*2 words
+            p[0x37F70].AddDestination(0x37FE0); // 13*2 words
+            p[0x37F70].AddDestination(0x37FE8); // 14*2 words
+            p[0x37F70].AddDestination(0x37FF0); // 15*2 words
+            p[0x37F70].AddDestination(0x37FF8); // 16*2 words
+            p[0x37F70].AddDestination(0x38000); // 17*2 words
+            p[0x37F70].AddDestination(0x38008); // 18*2 words
+            p[0x37F70].AddDestination(0x38010); // 19*2 words
+            p[0x37F70].AddDestination(0x38018); // 20*2 words
+            p[0x37F70].AddDestination(0x38020); // 21*2 words
+            p[0x37F70].AddDestination(0x38028); // 22*2 words
+            p[0x37F70].AddDestination(0x38030); // 23*2 words
+            p[0x37F70].AddDestination(0x38038); // 24*2 words
+            p[0x37F70].AddDestination(0x38040); // 25*2 words
+            p[0x38058].AddDestination(0x38060); // 0*2 words
+            p[0x38058].AddDestination(0x38068); // 1*2 words
+            p[0x38058].AddDestination(0x38070); // 2*2 words
+            p[0x38058].AddDestination(0x38078); // 3*2 words
+            p[0x38058].AddDestination(0x38080); // 4*2 words
+            p[0x38058].AddDestination(0x38088); // 5*2 words
+            p[0x38058].AddDestination(0x38090); // 6*2 words
+            
+            p[0x4CBF4].AddDestination(0x4CBFC);
+            p[0x4CBF4].AddDestination(0x4CC24);
+            p[0x4CBF4].AddDestination(0x4CC4C);
+            p[0x4CBF4].AddDestination(0x4CC60);
+            p[0x4CBF4].AddDestination(0x4CC74);
+            p[0x4CBF4].AddDestination(0x4CC8C);
+            p[0x4CBF4].AddDestination(0x4CCB0);
+            p[0x4CBF4].AddDestination(0x4CCC4);
+                                            
+        } 
 
         static void DefineUnknown()
         {
+            p.MarkUnknown(0x195CC);  // unused wgeo render routine
+            p.MarkUnknown(0x2FD30);
+            p.MarkUnknown(0x2FD38);
+            p.MarkUnknown(0x2FD40);
+            p.MarkUnknown(0x2FD48);
+            p.MarkUnknown(0x2FD50);
+            p.MarkUnknown(0x2FD58);
+            p.MarkUnknown(0x2FD60);
+            p.MarkUnknown(0x2FD68);
+            p.MarkUnknown(0x2FD70);
+            p.MarkUnknown(0x2FD78);
+            p.MarkUnknown(0x2FD80);
+            p.MarkUnknown(0x2FD88);
+            p.MarkUnknown(0x2FD90);
+            p.MarkUnknown(0x2FD98);
+            p.MarkUnknown(0x2FDA0);
+            p.MarkUnknown(0x2FDA8);
+            p.MarkUnknown(0x2FDB0);
+            p.MarkUnknown(0x2FDB8);
+            p.MarkUnknown(0x2FDC0);
+            p.MarkUnknown(0x2FDC8);
+            // 0x32298 is unused
+            p.MarkUnknown(0x34504);
+            p.MarkUnknown(0x36D9C);
+            p.MarkUnknown(0x3E818);
+            p.MarkUnknown(0x3E858);
+            p.MarkUnknown(0x3E88C);
+            p.MarkUnknown(0x3EB50);
+            p.MarkUnknown(0x3ECA4);
+            p.MarkUnknown(0x3ED50);
+            p.MarkUnknown(0x3EEAC);
+            p.MarkUnknown(0x3EF24);
+            p.MarkUnknown(0x3EFCC);
+            p.MarkUnknown(0x3F150);
+            p.MarkUnknown(0x416CC); 
+            p.MarkUnknown(0x416E4);
+            p.MarkUnknown(0x417CC);
+            p.MarkUnknown(0x419E4);
+            p.MarkUnknown(0x41C38);
+            p.MarkUnknown(0x41ED4);
+            p.MarkUnknown(0x41EFC);            
+            p.MarkUnknown(0x41F10);
+            p.MarkUnknown(0x41FDC);
+            p.MarkUnknown(0x4271C);
+            p.MarkUnknown(0x432DC);
+            p.MarkUnknown(0x43304);
+            p.MarkUnknown(0x4332C);
+            p.MarkUnknown(0x44370);
+            p.MarkUnknown(0x44AA8);
+            p.MarkUnknown(0x45B24); // IDA doesn't mark this as a routine?
+            p.MarkUnknown(0x45C04);
+            p.MarkUnknown(0x466A0);
+            p.MarkUnknown(0x49BA0);
+            p.MarkUnknown(0x49C20);
+            p.MarkUnknown(0x4A060);
+            p.MarkUnknown(0x4A128);
+            p.MarkUnknown(0x4A1EC);
+            p.MarkUnknown(0x4A298);
+            p.MarkUnknown(0x4A324);
+            p.MarkUnknown(0x4A44C);
+            p.MarkUnknown(0x4A594);
+            p.MarkUnknown(0x4A608);
+            p.MarkUnknown(0x4A67C);
+            p.MarkUnknown(0x4A740);
+            p.MarkUnknown(0x4A7E8);
+            p.MarkUnknown(0x4A9FC);
+            p.MarkUnknown(0x4AD64);    
+            p.MarkUnknown(0x4AE44);
+            p.MarkUnknown(0x4B828);
+            p.MarkUnknown(0x4B868);
+            //p.MarkUnknown(0x4BDB4);
+            //p.MarkUnknown(0x4C074);
+            //p.MarkUnknown(0x4C300);
+            //p.MarkUnknown(0x4C39C);
+            //p.MarkUnknown(0x4C764);       
+            //p.MarkUnknown(0x4CDCC);
+                
+            /*
+            p.MarkUnknown(0x3E968);
+            p.MarkUnknown(0x3EDD8);
+            p.MarkUnknown(0x3EE04);
+            p.MarkUnknown(0x3EE14);
+            p.MarkUnknown(0x3EE24);
+            p.MarkUnknown(0x3EE34);
+            p.MarkUnknown(0x3EE44);
+            p.MarkUnknown(0x3EE54);
+            p.MarkUnknown(0x3EF50);
+            p.MarkUnknown(0x3EF7C);
+            p.MarkUnknown(0x3F1F8);
+            p.MarkUnknown(0x41F60);
+            p.MarkUnknown(0x41FAC);
+            p.MarkUnknown(0x42000);
+            p.MarkUnknown(0x422E4);
+            p.MarkUnknown(0x42864);
+            p.MarkUnknown(0x42898);           
+            p.MarkUnknown(0x43354);
+            p.MarkUnknown(0x45A34);            
+            p.MarkUnknown(0x4AF70);            
+            p.MarkUnknown(0x4C3C8);
+            p.MarkUnknown(0x4C4D4);        
+            p.MarkUnknown(0x4D080);
+            p.MarkUnknown(0x4D184);
+            p.MarkUnknown(0x4D3BC);
+            p.MarkUnknown(0x4D478); 
+            p.MarkUnknown(0x4D498);
+            p.MarkUnknown(0x4D65C);
+            p.MarkUnknown(0x4D66C);
+            p.MarkUnknown(0x4DDE4);
+            p.MarkUnknown(0x4E330);
+            p.MarkUnknown(0x4E59C);
+            p.MarkUnknown(0x4E80C);
+            p.MarkUnknown(0x4EA24);
+            p.MarkUnknown(0x4EADC);
+            p.MarkUnknown(0x4EBDC);
+            p.MarkUnknown(0x4F090);
+            p.MarkUnknown(0x4F1A4);
+            p.MarkUnknown(0x4F680);
+            p.MarkUnknown(0x4F8AC);
+            p.MarkUnknown(0x500F8);
+            p.MarkUnknown(0x501A8);
+            p.MarkUnknown(0x50728);
+            */
+            
+            /* these are used as args
             p.MarkUnknown(0x18DD0);
             p.MarkUnknown(0x1C850);
             p.MarkUnknown(0x18F84);
             p.MarkUnknown(0x18FA4);
-            p.MarkUnknown(0x1D014);
+            p.MarkUnknown(0x1D014); 
             p.MarkUnknown(0x2A4CC);
+            */
+            
+            /*
+            p.MarkBranch(0x4AD64);
+            p.MarkBranch(0x4AE44);
+            0x4a9fc
+            0x4a740
+            0x4a7e8
+            0x49ba0
+            0x4a060
+            0x4a128
+            0x4a1ec
+            0x4a324
+            0x4a44c
+            
             p.MarkBranch(0x3E170);
+            
+            
             p.MarkUnknown(0x5519C);
             p.MarkUnknown(0x191B0);
             p.MarkUnknown(0x19E68);
@@ -667,8 +817,8 @@ namespace PSXDiscompile
 
         public static void DefineHacks()
         {
-            p[0x430A0].HackString = "GTE_GetDataRegister(9);";
-            p[0x3AD6C].HackMustInvalidateICache = true;
+            //p[0x430A0].HackString = "GTE_GetDataRegister(9);";
+            //p[0x3AD6C].HackMustInvalidateICache = true;
         }
     }
 }
