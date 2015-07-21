@@ -5,10 +5,10 @@ Unlabeled functions have not yet been reverse engineered and can be found under 
 * `8001177C`
 * `80011870`
 * `80011A18`
-* `80011A58`
-* `80011C8C`
-* `80011CA0`
-* `80011D30`
+* `80011A58` - `LIBC_Malloc`
+* `80011C8C` - `LIBC_Free`
+* `80011CA0` - `LIBC_Realloc`
+* `80011D30` - `LIBC_Calloc`
 * `80011D88` - `CORE_Main`
 * `80011DD0` 
 * `80011FC4` - `CORE_Loop`
