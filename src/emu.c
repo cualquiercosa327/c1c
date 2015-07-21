@@ -10,7 +10,7 @@
 #include "irq.h"
 
 uint32_t *EMU_reg;
-uint32_t *EMU_ram;
+uint32_t EMU_ram[0x88000];
 uint32_t *EMU_scratch;
 
 uint32_t (*EMU_codemap[EMU_RAMWORDS])(uint32_t address);

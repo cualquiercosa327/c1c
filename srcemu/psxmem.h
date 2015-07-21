@@ -26,6 +26,8 @@ extern "C" {
 
 #include "psxcommon.h"
 
+#define PSXMEM_STATIC
+
 #if defined(__BIGENDIAN__)
 
 #define _SWAP16(b) ((((unsigned char *)&(b))[0] & 0xff) | (((unsigned char *)&(b))[1] & 0xff) << 8)

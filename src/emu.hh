@@ -122,4 +122,18 @@ static_assert(std::is_trivial<emuptr<const int>>::value,"emuptr<const T> must be
 #undef EMUPTR
 #define EMUPTR(x) emuptr<x>
 
+#define EMUGLOBALVAR(type,name,address) \
+const emuptr<type> name ## _ptr(address); \
+type &name = *(name ## _ptr);
+
+#define EMUGLOBALARR(type,size,name,address) \
+const emuptr<type[size]> name ## _ptr(address); \
+type (&name)[size] = *(name ## _ptr);
+
+#define EMUEXTERNVAR(type,name) \
+extern type &name;
+
+#define EMUEXTERNARR(type,size,name) \
+extern type (&name)[size];
+
 #endif

@@ -65,8 +65,9 @@ int psxMemInit() {
 	memset(psxMemRLUT, 0, 0x10000 * sizeof(void *));
 	memset(psxMemWLUT, 0, 0x10000 * sizeof(void *));
 
+  #ifndef PSXMEM_STATIC
 	psxM = malloc(0x220000);
-
+  #endif
 	psxP = &psxM[0x200000];
 	psxH = &psxM[0x210000];
 
@@ -116,8 +117,9 @@ void psxMemReset() {
 }
 
 void psxMemShutdown() {
+  #ifndef PSXMEM_STATIC
 	free(psxM);
-
+  #endif
 	free(psxR);
 	free(psxMemRLUT);
 	free(psxMemWLUT);

@@ -87,7 +87,7 @@ extern "C" {
 #define EMUPTR(x) uint32_t
 
 extern uint32_t *EMU_reg;
-extern uint32_t *EMU_ram;
+extern uint32_t EMU_ram[];
 extern uint32_t *EMU_scratch;
 
 extern uint32_t (*EMU_codemap[EMU_RAMWORDS])(uint32_t address);
