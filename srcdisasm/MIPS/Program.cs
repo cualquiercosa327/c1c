@@ -222,18 +222,26 @@ namespace PSXDiscompile
                             {
                                 Word ww = wx;
                                 do
-                                {
+                                {  
                                     if (ww.IsMethod || ww.IsTarget)
                                     {
-                                        o.WriteLine("ZZ_MARK_TARGET(0x{0:X},{1});",ww.Address,ww.Label);
+                                        Word wn = this[ww.Address+4];
+                                        while (!(wn.IsMethod || wn.IsTarget))
+                                        {
+                                            if (wn.Address == lastword)
+                                                break;
+                                            if (wn.IsCode || wn.IsDelaySlot)
+                                                wn = this[wn.Address+4];
+                                            else
+                                                break;
+                                        }
+                                        o.WriteLine("ZZ_MARK_TARGET(0x{0:X},0x{1:X},{2});",ww.Address,wn.Address,ww.Label);
+                                        ww = wn;
                                     }
-                                    else if (ww.IsCode || ww.IsDelaySlot)
-                                    {
-                                        o.WriteLine("ZZ_MARK(0x{0:X});",ww.Address);
-                                    }
+                                    else
+                                        ww = this[ww.Address+4];
                                     if (ww.Address == lastword)
                                         break;
-                                    ww = this[ww.Address + 4];
                                 } while (!ww.IsMethod);
                             }
                         }
