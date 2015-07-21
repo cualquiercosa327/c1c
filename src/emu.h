@@ -85,6 +85,7 @@ extern "C" {
 #define EMU_SCRATCHWORDS 256
 
 #define EMUPTR(x) uint32_t
+#define EMUADDR(x) EMU_Address((uint32_t)(x))
 
 extern uint32_t *EMU_reg;
 extern uint32_t EMU_ram[];
@@ -114,6 +115,7 @@ extern void EMU_WriteLeft(uint32_t address,uint32_t value);
 extern void EMU_WriteRight(uint32_t address,uint32_t value);
 
 extern void *EMU_Pointer(uint32_t address);
+extern uint32_t EMU_Address(uint32_t x);
 
 extern void EMU_SMultiply(int32_t a,int32_t b);
 extern void EMU_UMultiply(uint32_t a,uint32_t b);

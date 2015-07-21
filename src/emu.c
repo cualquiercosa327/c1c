@@ -679,7 +679,26 @@ void *EMU_Pointer(uint32_t address)
 	{
 		return (uint8_t *)&EMU_ram[(address & 0x1FFFFF) >> 2] + (address & 3);
 	}
+  else if (address >= 0x1F800000 && address <= 0x1F8003FF)
+	{
+		return (uint8_t *)&EMU_scratch[(address & 0x3FF) >> 2] + (address & 3);
+	}
 	abort();
+}
+
+uint32_t EMU_Address(uint32_t x)
+{
+  if ((x >= (uint32_t)(EMU_ram)) && 
+      (x <= (uint32_t)(EMU_ram+EMU_RAMWORDS)))
+  {
+    return (x - (uint32_t)(EMU_ram)) | 0x80000000;
+  }
+  else if ((x >= (uint32_t)(EMU_scratch)) &&
+           (x <= (uint32_t)(EMU_scratch+EMU_SCRATCHWORDS)))
+  { 
+    return (x - (uint32_t)(EMU_scratch)) | 0x1F800000;
+  }
+  abort();
 }
 
 void EMU_SMultiply(int32_t a,int32_t b)

@@ -42,7 +42,7 @@ public:
 		this->address = other.address;
 	}
 
-	explicit operator uint32_t()
+	/*explicit */operator uint32_t()
 	{
 		return address;
 	}
@@ -67,6 +67,11 @@ public:
 		return *(*this + i);
 	}
 
+  void operator =(uint32_t address)
+  {
+    this->address = address;
+  }
+    
 	emuptr operator +(ptrdiff_t i) const
 	{
 		return emuptr(address + i * sizeof(T));
@@ -114,6 +119,16 @@ public:
 		address -= sizeof(T);
 		return result;
 	}
+  
+  bool operator ==(const emuptr<typename std::remove_const<T>::type> &other) const
+  {
+    return (this->address == other.address);
+  }
+  
+  bool operator !=(const emuptr<typename std::remove_const<T>::type> &other) const
+  {
+    return (this->address != other.address);
+  }
 };
 
 static_assert(std::is_trivial<emuptr<int>>::value,"emuptr<T> must be a trivial type for ABI compatibility with uint32_t!");
