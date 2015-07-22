@@ -1,5 +1,6 @@
 #include "core.h"
 #include "emu.h"
+#include "ext.h"
 
 int CORE_Main(void)
 {
@@ -203,6 +204,7 @@ ZZ_11FC4_1C0:
       A0 = EMU_ReadU32(0x8005840C);
       EMU_Invoke(0x800326D8,1,A0 + 136); //+ 0x88
     }
+    EXT_HandleExtensions();
     EMU_Invoke(0x80016E5C,0);
   } while (!EMU_ReadU32(0x80056428));
   EMU_Write32(0x800618B0,0);

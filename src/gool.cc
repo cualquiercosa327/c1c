@@ -716,6 +716,21 @@ uint32_t GOOL_UpdateObject(emuptr<goolobj> obj, uint32_t flag)
   if (obj == crash) 
   {
     EMU_Invoke(0x800167A4,0); // PAD_Update();
+
+    /* begin extending code */
+    #if C1C_ENABLE_INGAMEMENU
+    uint32_t padpress = EMU_ReadU32(0x8005E71C);
+    uint32_t padheld = EMU_ReadU32(0x8005E720);
+    if (padheld & 0x100) // if select held
+    {
+      // cause game to ignore all other buttons
+      padheld &= 0x100; 
+      padpress &= 0x100;
+      EMU_Write32(0x8005E71C,padpress);
+      EMU_Write32(0x8005E720,padheld);
+    }
+    #endif
+    /* end extending code */
   }
   unhandledobj = obj;
   

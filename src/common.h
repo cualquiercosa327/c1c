@@ -55,4 +55,9 @@ enum
 	LOG__COUNT
 };
 
+
+// Misc
+
+#define C1C_ENABLE_INGAMEMENU
+
 #endif
