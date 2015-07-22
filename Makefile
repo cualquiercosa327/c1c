@@ -6,7 +6,7 @@ CXXSOURCES := $(shell find src -name "*.cc")
 OBJECTS := $(CSOURCES:.c=.o) $(CXXSOURCES:.cc=.o)
 DEPENDS := $(CSOURCES:.c=.d) $(CXXSOURCES:.cc=.d)
 
-all: c2c
+all: c1c
 
 clean:
 	rm -f $(OBJECTS)
@@ -18,7 +18,7 @@ clean:
 %.o: %.cc
 	$(CXX) -MMD -o $@ -c $< $(CXXFLAGS) `sdl2-config --cflags`
 
-c2c: $(OBJECTS)
+c1c: $(OBJECTS)
 	$(CXX) -o $@ $^ $(LDFLAGS) `sdl2-config --libs`
 
 -include $(DEPENDS)
