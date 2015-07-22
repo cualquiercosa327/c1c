@@ -1,8 +1,12 @@
-# C2C #
-This is a project to reverse engineer the game _Crash Bandicoot 2: Cortex Strikes Back_ and eventually have a complete port to C. The game engine is converted directly from MIPS machine code into a massive block of C code which utilizes a playstation emulator for I/O. Portions of the converted code can then be decompiled by hand and used in place of the original code.
+Original README.md written by ughman. All instances of `C2C` have been replaced with `C1C`.
+
+# C1C #
+This is a project to reverse engineer the game _Crash Bandicoot_ and eventually have a complete port to C. The game engine is converted directly from MIPS machine code into a massive block of C code which utilizes a playstation emulator for I/O. Portions of the converted code can then be decompiled by hand and used in place of the original code.
+
+This project is a fork of ughman's C2C (https://github.com/ughman/c2c), a project to reverse engineer _Crash Bandicoot 2: Cortex Strikes Back_-the second installment of the Crash games. As expected, both projects share many commonalities as both games are built from the same codebase. C1C uses C2C's emulator and discompiler (with the exception of code region specifications in `srcdisasm/Main.cs`) and contains much of the same interoperability code for accessing the emulator. Therefore, most of the remainder of this document applies to both projects.
 
 ## Technical Details ##
-If you're only interested in compiling and running C2C, skip ahead past this section.
+If you're only interested in compiling and running C1C, skip ahead past this section.
 
 ### The Disassembler ###
 Located in `srcdisasm/` is a custom-built MIPS disassembler written in C#. This disassembler is given the game engine's executable file and outputs a massive C source file which contains equivalent code. For example, see the following series of instructions taken directly from the game:
@@ -77,11 +81,11 @@ Decompiled functions may call functions which have yet to be decompiled by calli
 The main body of code is located in `src/` and contains the core code of the project as well as interoperability code for accessing the emulator. Decompiled functions should be moved into this section of the code base and given proper function names.
 
 ## Compiling ##
-At the moment, C2C is only available for compilation and execution on Windows systems. You may be able to rig a non-windows build with some work, however.
+At the moment, C1C is only available for compilation and execution on Windows systems. You may be able to rig a non-windows build with some work, however.
 
-C2C has an odd set of dependencies for compilation:
+C1C has an odd set of dependencies for compilation:
 
-* For C2C: Cygwin
+* For C1C: Cygwin
  * GNU Make
  * GCC (C99 and C++11)
  * SDL2
@@ -93,8 +97,8 @@ The disassembler is optional, and is unnecessary for any build operation.
 * For the disassembler (optional): Microsoft Visual C# 2005 (or later) Express (or Professional)
  * Probably also works with MonoDevelop
 
-### Building C2C ###
-Under Cygwin, `cd` into the main directory (containing `src/`, `srcemu/`, `Makefile`, etc) and run `make`. Compilation of `src/zz.c` may take some time as it is incredibly large and filled with unusual control flow statements. The resulting executable is `c2c.exe`.
+### Building C1C ###
+Under Cygwin, `cd` into the main directory (containing `src/`, `srcemu/`, `Makefile`, etc) and run `make`. Compilation of `src/zz.c` may take some time as it is incredibly large and filled with unusual control flow statements. The resulting executable is `c1c.exe`.
 
 ### Building The Emulator ###
 Under Microsoft Visual Studio or Visual C++, the solution file `srcemu/hookemu.sln` should build without issue. Newer versions of Visual Studio or Visual C++ may require the project file to be converted. This should not be an issue, however please do not submit pull requests containing the converted project file.
@@ -103,18 +107,18 @@ Under Microsoft Visual Studio or Visual C++, the solution file `srcemu/hookemu.s
 Under Microsoft Visual Studio or Visual C#, the solution file `srcdisasm/PSXDiscompile.sln` should build without issue. See above for information on converting the project file to a newer format.
 
 ## Running ##
-To run C2C, under Cygwin, `cd` into the main directory (containing `c2c.exe`, `psx.dll`, etc) and run `./c2c`.
+To run C1C, under Cygwin, `cd` into the main directory (containing `c1c.exe`, `psx.dll`, etc) and run `./c1c`.
 
 __You will need to have the following files present in the same directory:__
 
-* `c2c.bin`: An image of the Crash Bandicoot 2 (PAL) game disc, including complete MODE2/FORM1 headers. This is the BIN out of a CUE/BIN rip.
+* `c1c.bin`: An image of the Crash Bandicoot (NTSC) game disc, including complete MODE2/FORM1 headers. This is the BIN out of a CUE/BIN rip.
 * `psx.dll`: The compiled emulator (see above).
 * `psx-gpu.dll`: A playstation emulator GPU plugin.
 * `psx-spu.dll`: A playstation emulator SPU plugin.
 * `psx-pad1.dll`: A playstation emulator gamepad plugin.
 * `psx-pad2.dll`: A playstation emulator gamepad plugin. This may need to be different from the other one.
 * `memcard1`: A memory card file in the typical 128 KB format. This will be read but not written to.
-* `SCES_009.67`: This is the original game executable, which can be found on the game disc (PAL).
+* `SCUS_949.00`: This is the original game executable, which can be found on the game disc (NTSC).
 
 For the plugins, I recommend the following:
 
@@ -126,4 +130,4 @@ For the plugins, I recommend the following:
 The second gamepad plugin is not actually utilized, but must be present for the emulator to run.
 
 ## Reporting Issues ##
-You may report any issues you have to `chekwob@yahoo.com`, however please understand that this software is currently not intended for regular use. The complex build and running requirements and should be a testament to this fact.
+You may report any issues you have to `chekwob@yahoo.com` or `wurlitzerfox@yahoo.com`, however please understand that this software is currently not intended for regular use. The complex build and running requirements and should be a testament to this fact.
