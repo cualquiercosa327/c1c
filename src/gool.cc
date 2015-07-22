@@ -653,6 +653,9 @@ uint32_t GOOL_ChangeObjectState(emuptr<goolobj> obj, uint32_t state, uint32_t ar
     SP+=8;
     if (ERROR_ISERRORCODE(result)) 
     {
+      #ifdef GOOL_DEBUG
+      GOOL_PrintObject(obj);
+      #endif
       return result;
     }
   }
@@ -673,6 +676,9 @@ uint32_t GOOL_ChangeObjectState(emuptr<goolobj> obj, uint32_t state, uint32_t ar
     SP+=8;      
     if (ERROR_ISERRORCODE(result))
     {
+      #ifdef GOOL_DEBUG
+      GOOL_PrintObject(obj);
+      #endif
       return result;
     }
   }
@@ -1004,6 +1010,10 @@ uint32_t GOOL_InterpretObject(emuptr<goolobj> obj, uint32_t flags, emuptr<goolst
   };
   do
   {
+    #ifdef GOOL_DEBUG
+    GOOL_PrintObjectDebugInfo(obj);
+    #endif
+    
     FP = GOOL_GOP_STACKTOPREF; 
     instruction = *(obj->pc++);
     opcode = G_OPCODE(instruction);
@@ -3205,3 +3215,80 @@ ZZ_201DC_39C8:
 }
       
 #undef greturn  
+
+#ifdef GOOL_DEBUG
+#define GOOL_DEBUG_DISLEN 7 
+uint32_t rwlog = 1;
+void GOOL_PrintObjectDebugInfo(emuptr<goolobj> obj)
+{
+  GOOL_PrintObject(obj);
+  
+  FILE *objlog = fopen("objlog.txt", "a+");
+  
+  emuptr<uint32_t> execcode(obj->local->items[1]);
+  uint32_t pcins = (uint32_t)obj->pc - (uint32_t)execcode;
+  uint32_t pca = pcins - ((GOOL_DEBUG_DISLEN/2)*4);
+  if (pca < 0)
+    pca = 0;
+  uint32_t pcb = pca + (GOOL_DEBUG_DISLEN*4);
+  
+  fprintf(objlog, "current code window:\n");
+  for (uint32_t pc=pca; pc<pcb; pc+=4)
+  {
+    uint32_t ins = execcode[pc/4];
+    char *line = GOOL_DIS_Disassemble(ins, pc);
+   
+    if (pc == pcins)
+      fprintf(objlog, "*** %s\n", line);
+    else
+      fprintf(objlog, "    %s\n", line);
+  }
+  fprintf(objlog, "\n");
+  fclose(objlog);
+}
+
+void GOOL_PrintObject(emuptr<goolobj> obj) 
+{
+  FILE *objlog;
+  if (rwlog)
+  {
+   objlog = fopen("objlog.txt", "w+"); 
+   rwlog = 0;
+  }
+  else
+   objlog = fopen("objlog.txt", "a+");
+     
+  emuptr<nsitem> execheader(obj->local->items[0]);
+  
+  uint32_t base = *(uint32_t*)&(execheader[0xC]) * 4;
+  emuptr<uint8_t> stack(EMUADDR((uint8_t*)&obj->self + base));
+  
+  uint32_t fp = GOOL_OBJECT_GETFP(obj) - base;
+  uint32_t sp = GOOL_OBJECT_GETSP(obj) - base;
+  
+  fprintf(objlog, "stack start: %x+60\n", base);
+  fprintf(objlog, "stack size: %x\n", sp);
+  fprintf(objlog, "stack frame: %x | %x\n", fp+base, sp+base);
+  fprintf(objlog, "memory contents: \n");
+  
+  uint32_t offs = 0;
+  for (uint32_t i=0; i<sp; i++)
+  {
+    offs = i % 16;
+    if (offs == 0)
+      fprintf(objlog, "%03x+60:", i+base);
+    if (i == fp)
+      fprintf(objlog, "(%02x", stack[i]);
+    else if (i == sp-1)
+      fprintf(objlog, " %02x)", stack[i]);
+    else
+      fprintf(objlog, " %02x", stack[i]);
+    if (offs == 15)
+      fprintf(objlog, "\n");
+  }
+  if (offs != 15)
+    fprintf(objlog, "\n");
+  fprintf(objlog, "\n");
+  fclose(objlog);
+}
+#endif

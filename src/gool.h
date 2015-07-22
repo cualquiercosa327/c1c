@@ -9,6 +9,10 @@
 extern "C" {
 #endif
 
+#ifdef GOOL_DEBUG
+#include "disgool.h"
+#endif
+
 #define GOOL_OBJECT_LEVELSPAWNLISTSIZE 3592
 #define GOOL_OBJECT_SPAWNLISTSIZE      304
 #define GOOL_OBJECT_POOLSIZE           96
@@ -329,6 +333,11 @@ extern void GOOL_OP_8C(EMUPTR(goolobj) obj, uint32_t instruction);
 extern void GOOL_OP_8D(EMUPTR(goolobj) obj, uint32_t instruction);
 extern void GOOL_OP_8E(EMUPTR(goolobj) obj, uint32_t instruction);
 extern void GOOL_OP_8F(EMUPTR(goolobj) obj, uint32_t instruction, uint32_t &flags, EMUPTR(goolobj) recipient, uint32_t opcode);
+
+#ifdef GOOL_DEBUG
+extern void GOOL_PrintObjectDebugInfo(EMUPTR(goolobj) obj);
+extern void GOOL_PrintObject(EMUPTR(goolobj) obj);
+#endif
 
 #ifdef __cplusplus
 }
