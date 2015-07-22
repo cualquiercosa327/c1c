@@ -1,4 +1,4 @@
-Original README.md written by ughman. All instances of `C2C` have been replaced with `C1C`.
+Original README.md written by ughman. All instances of C2C have been replaced with C1C.
 
 # C1C #
 This is a project to reverse engineer the game _Crash Bandicoot_ and eventually have a complete port to C. The game engine is converted directly from MIPS machine code into a massive block of C code which utilizes a playstation emulator for I/O. Portions of the converted code can then be decompiled by hand and used in place of the original code.
