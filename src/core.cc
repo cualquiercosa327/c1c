@@ -1,6 +1,9 @@
 #include "core.h"
+#include "gool.h"
 #include "emu.h"
 #include "ext.h"
+
+EMUEXTERNARR(goolobjlist,8,usedlists);
 
 int CORE_Main(void)
 {
@@ -37,7 +40,8 @@ void CORE_Loop(uint32_t levelid)
           {
             goto ZZ_11FC4_1C0;
           }
-          V0 = EMU_Invoke(0x8001C6C8,6,0x80060DF0,4,4,0,0,0);        
+          
+          V0 = (uint32_t)GOOL_CreateObject(emuptr<goolobj>(EMUADDR(&usedlists[7])),4,4,0,emuptr<uint32_t>(0),0);
           EMU_Write32(0x800618BC,V0);
           if (V0 >= 0xFFFFFF02)
           {
