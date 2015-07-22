@@ -81,42 +81,42 @@ Unlabeled functions have not yet been reverse engineered and can be found under 
 * `8001A5F4`
 * `8001A754`
 * `8001A850`
-* `8001AAD8`
-* `8001AC28`
+* `8001AAD8` - `GOOL_InitAllocTable`
+* `8001AC28` - `GOOL_FreeAllocTable`
 * `8001AC60`
 * `8001AC9C`
-* `8001B3F0`
-* `8001B648`
-* `8001B6F0`
+* `8001B3F0` - `GOOL_TraverseObjectTreePreorder`
+* `8001B648` - `GOOL_TraverseObjectTreePostorder`
+* `8001B6F0` 
 * `8001B788`
 * `8001B84C`
 * `8001B92C`
 * `8001BA18`
 * `8001BA90`
 * `8001BAB0`
-* `8001BCA4`
+* `8001BCA4` - `GOOL_TestObjectStateFlags`
 * `8001BCC8`
-* `8001C6C8`
-* `8001CB80`
+* `8001C6C8` - `GOOL_CreateObject`
+* `8001CB80` - `GOOL_InitObject`
 * `8001CDD0`
 * `8001D11C`
 * `8001D1E0`
 * `8001D200`
 * `8001D33C`
 * `8001D5EC`
-* `8001D698`
-* `8001D914`
-* `8001DA0C`
+* `8001D698` - `GOOL_ChangeObjectState`
+* `8001D914` - `GOOL_CreateObjectStackFrame`
+* `8001DA0C` - `GOOL_UpdateObject`
 * `8001DE78`
 * `8001E3D4`
 * `8001E7D8`
 * `8001EB28`
 * `8001EEA8`
 * `8001F30C`
-* `8001FB34`
+* `8001FB34` - `GOOL_TranslateGop`
 * `8001FC4C`
 * `8001FDC4`
-* `800201DC`
+* `800201DC` - `GOOL_InterpretObject`
 * `80024040`
 * `800243A0`
 * `80024528`

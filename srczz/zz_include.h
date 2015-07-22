@@ -78,32 +78,32 @@ ZZ_MARK_NATIVE(0x80013B30,0x80013D48,ZZ_13B30,NS_13B30);
 #include "zz_1a5f4.h"
 #include "zz_1a754.h"
 #include "zz_1a850.h"
-#include "zz_1aad8.h"
+ZZ_MARK_NATIVE(0x8001AAD8,0x8001AC28,ZZ_1AAD8,GOOL_InitAllocTable);
 #include "zz_1ac28.h"
 #include "zz_1ac60.h"
 #include "zz_1ac9c.h"
 #include "zz_1b3f0.h"
-#include "zz_1b648.h"
-#include "zz_1b6f0.h"
+ZZ_MARK_NATIVE(0x8001B648,0x8001B6F0,ZZ_1B648,GOOL_TraverseObjectTreePreorder);
+ZZ_MARK_NATIVE(0x8001B6F0,0x8001B788,ZZ_1B6F0,GOOL_TraverseObjectTreePostorder);
 #include "zz_1b788.h"
 #include "zz_1b84c.h"
 #include "zz_1b92c.h"
 #include "zz_1ba18.h"
 #include "zz_1ba90.h"
 #include "zz_1bab0.h"
-#include "zz_1bca4.h"
+ZZ_MARK_NATIVE(0x8001BCA4,0x8001BCC8,ZZ_1BCA4,GOOL_TestObjectStateFlags);
 #include "zz_1bcc8.h"
-#include "zz_1c6c8.h"
-#include "zz_1cb80.h"
+ZZ_MARK_NATIVE(0x8001C6C8,0x8001CB80,ZZ_1C6C8,GOOL_CreateObject);
+ZZ_MARK_NATIVE(0x8001CB80,0x8001CDD0,ZZ_1CB80,GOOL_InitObject);
 #include "zz_1cdd0.h"
 #include "zz_1d11c.h"
 #include "zz_1d1e0.h"
 #include "zz_1d200.h"
 #include "zz_1d33c.h"
 #include "zz_1d5ec.h"
-#include "zz_1d698.h"
-#include "zz_1d914.h"
-#include "zz_1da0c.h"
+ZZ_MARK_NATIVE(0x8001D698,0x8001D914,ZZ_1D698,GOOL_ChangeObjectState);
+ZZ_MARK_NATIVE(0x8001D914,0x8001DA0C,ZZ_1D914,GOOL_CreateObjectStackFrame);
+ZZ_MARK_NATIVE(0x8001DA0C,0x8001DE78,ZZ_1DA0C,GOOL_HandleObject);
 #include "zz_1de78.h"
 #include "zz_1e3d4.h"
 #include "zz_1e7d8.h"
@@ -113,7 +113,7 @@ ZZ_MARK_NATIVE(0x80013B30,0x80013D48,ZZ_13B30,NS_13B30);
 #include "zz_1fb34.h"
 #include "zz_1fc4c.h"
 #include "zz_1fdc4.h"
-#include "zz_201dc.h"
+ZZ_MARK_NATIVE(0x800201DC,0x80024040,ZZ_201DC,GOOL_InterpretObject);
 #include "zz_24040.h"
 #include "zz_243a0.h"
 #include "zz_24528.h"
